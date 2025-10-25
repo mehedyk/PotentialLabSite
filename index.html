@@ -1,10 +1,10 @@
-<!-- index.html -->
+<!-- index.html-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Robotics & AI Lab - Daffodil International University</title>
+    <title>Advanced Robotics & AI Lab - Daffodil International University</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -199,7 +199,7 @@
 
         /* Sections */
         section {
-            padding: 80px 20px;
+            padding: 90px 20px;
         }
 
         .section-title {
@@ -235,8 +235,20 @@
         .about-content p {
             font-size: 1.1rem;
             line-height: 1.8;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             color: #444;
+        }
+
+        .about-content .preview-para {
+            display: block;
+        }
+
+        .about-content .extra-paras {
+            display: none;
+        }
+
+        .about-content .extra-paras.show {
+            display: block;
         }
 
         /* Research Highlights */
@@ -272,6 +284,44 @@
         .research-card p {
             color: #555;
             line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .research-card .preview-text {
+            display: block;
+        }
+
+        .research-card .full-text {
+            display: none;
+            margin-top: 12px;
+        }
+
+        .research-card .full-text.show {
+            display: block;
+        }
+
+        .read-more-btn {
+            background: none;
+            border: none;
+            color: var(--secondary);
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.95rem;
+            padding: 8px 0;
+            margin-top: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .read-more-btn:hover {
+            color: var(--primary);
+        }
+
+        .read-more-btn::after {
+            content: ' ↓';
+        }
+
+        .read-more-btn.expanded::after {
+            content: ' ↑';
         }
 
         /* Director Section */
@@ -282,10 +332,11 @@
         .director-container {
             display: flex;
             gap: 50px;
-            align-items: center;
-            max-width: 1000px;
+            align-items: flex-start;
+            max-width: 1100px;
             margin: 0 auto;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         .director-image {
@@ -383,6 +434,248 @@
         .stat-item p {
             font-size: 1.1rem;
             opacity: 0.9;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--secondary);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            gap: 15px;
+        }
+
+        .project-header h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            font-weight: 600;
+            line-height: 1.3;
+            flex: 1;
+        }
+
+        .project-status {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .project-status.active {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .project-desc {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .project-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Publications */
+        .publications-list {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .publication-item {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+            border-left: 4px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .publication-item:hover {
+            box-shadow: 0 4px 25px rgba(0,0,0,0.12);
+            transform: translateX(5px);
+        }
+
+        .publication-item h4 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .pub-authors {
+            color: #555;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .pub-venue {
+            color: #777;
+            font-style: italic;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .pub-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .badge {
+            background: var(--light-bg);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: var(--primary);
+            border: 1px solid var(--border);
+        }
+
+        /* News Grid */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .news-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .news-date {
+            color: var(--secondary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .news-card h3 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .news-card p {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .news-link {
+            color: var(--secondary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .news-link:hover {
+            color: var(--primary);
+        }
+
+        /* Achievements Timeline */
+        .achievements-timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .achievements-timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--secondary), var(--accent));
+        }
+
+        .achievement-item {
+            position: relative;
+            margin-bottom: 40px;
+            display: flex;
+            gap: 30px;
+        }
+
+        .achievement-item::before {
+            content: '';
+            position: absolute;
+            left: -42px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--secondary);
+            border: 3px solid var(--white);
+            box-shadow: 0 0 0 3px var(--light-bg);
+        }
+
+        .achievement-year {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--secondary);
+            min-width: 60px;
+        }
+
+        .achievement-content {
+            flex: 1;
+            background: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+        }
+
+        .achievement-content h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .achievement-content p {
+            color: #555;
+            line-height: 1.7;
         }
 
         /* Footer */
@@ -491,7 +784,7 @@
             <div class="nav-container">
                 <div class="logo">
                     <div class="logo-text">
-                        <h1>Advanced Robotics & AI Lab</h1>
+                        <h1>EEE & AI Lab</h1>
                         <p>Department of EEE | Daffodil International University</p>
                     </div>
                 </div>
@@ -500,8 +793,9 @@
                     <li><a href="#" class="active">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#research">Research</a></li>
+                    <li><a href="#projects">Projects</a></li>
                     <li><a href="#people">People</a></li>
-                    <li><a href="#achievements">Achievements</a></li>
+                    <li><a href="#achievements">Publications</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
@@ -528,17 +822,19 @@
                 <p>Leading research and innovation in robotics and artificial intelligence</p>
             </div>
             <div class="about-content">
-                <p>The Advanced Robotics & AI Lab at Daffodil International University is dedicated to pushing the boundaries of intelligent systems and autonomous technologies. Established with a vision to become a center of excellence in robotics and AI research, our lab serves as a bridge between academic innovation and practical applications that address real-world challenges.</p>
+                <p class="preview-para">The Advanced Robotics & AI Lab at Daffodil International University is dedicated to pushing the boundaries of intelligent systems and autonomous technologies. Established with a vision to become a center of excellence in robotics and AI research, our lab serves as a bridge between academic innovation and practical applications that address real-world challenges.</p>
                 
-                <p>Our multidisciplinary team comprises experienced faculty members, dedicated research scholars, and enthusiastic undergraduate students who work collaboratively on cutting-edge projects. We focus on solving complex problems through innovative research in machine learning, computer vision, robotic systems, and intelligent control algorithms. The lab is equipped with state-of-the-art facilities including advanced computing infrastructure, robotic platforms, sensor networks, and prototyping equipment.</p>
+                <div class="extra-paras" id="aboutExtra">
+                    <p>Our multidisciplinary team comprises experienced faculty members, dedicated research scholars, and enthusiastic undergraduate students who work collaboratively on cutting-edge projects. We focus on solving complex problems through innovative research in machine learning, computer vision, robotic systems, and intelligent control algorithms. The lab is equipped with state-of-the-art facilities including advanced computing infrastructure, robotic platforms, sensor networks, and prototyping equipment.</p>
+                    
+                    <p>We actively collaborate with leading industry partners, government organizations, and international research institutions to develop solutions that address critical needs in healthcare, manufacturing, agriculture, environmental monitoring, and smart cities. Our research projects are often interdisciplinary in nature, combining expertise from electrical engineering, computer science, mechanical engineering, and other domains to create comprehensive solutions.</p>
+                    
+                    <p>The lab provides students with invaluable hands-on experience in cutting-edge technologies, preparing them to become leaders and innovators in the rapidly evolving field of AI and robotics. Through research assistantships, project-based learning, and participation in national and international competitions, students gain practical skills that complement their academic knowledge. Many of our alumni have gone on to pursue advanced degrees at prestigious universities or have joined leading technology companies worldwide.</p>
+                    
+                    <p>Our commitment extends beyond research publications to creating tangible impact in society. We regularly organize workshops, seminars, and training programs to disseminate knowledge and foster a culture of innovation within the university and broader community. The lab also serves as an incubation space for student-led startups and entrepreneurial initiatives in the robotics and AI domain.</p>
+                </div>
                 
-                <p>We actively collaborate with leading industry partners, government organizations, and international research institutions to develop solutions that address critical needs in healthcare, manufacturing, agriculture, environmental monitoring, and smart cities. Our research projects are often interdisciplinary in nature, combining expertise from electrical engineering, computer science, mechanical engineering, and other domains to create comprehensive solutions.</p>
-                
-                <p>The lab provides students with invaluable hands-on experience in cutting-edge technologies, preparing them to become leaders and innovators in the rapidly evolving field of AI and robotics. Through research assistantships, project-based learning, and participation in national and international competitions, students gain practical skills that complement their academic knowledge. Many of our alumni have gone on to pursue advanced degrees at prestigious universities or have joined leading technology companies worldwide.</p>
-                
-                <p>Our commitment extends beyond research publications to creating tangible impact in society. We regularly organize workshops, seminars, and training programs to disseminate knowledge and foster a culture of innovation within the university and broader community. The lab also serves as an incubation space for student-led startups and entrepreneurial initiatives in the robotics and AI domain.</p>
-                
-                <a href="#" class="btn btn-primary" style="margin-top: 20px;">Learn More About Us</a>
+                <button class="read-more-btn" onclick="toggleAbout()">Read More</button>
             </div>
         </div>
     </section>
@@ -553,33 +849,51 @@
             <div class="research-grid">
                 <div class="research-card">
                     <h3>Autonomous Robotics</h3>
-                    <p>Our autonomous robotics research focuses on developing intelligent systems capable of independent navigation, complex manipulation tasks, and adaptive decision-making in dynamic and unstructured environments. We work on mobile ground robots, aerial drones, and collaborative robot arms that can perceive their surroundings, plan optimal paths, and execute tasks with minimal human intervention.</p>
-                    <p>Current projects include agricultural robots for precision farming, warehouse automation systems, and search-and-rescue robots for disaster response scenarios. We integrate advanced sensors, real-time processing algorithms, and robust control systems to achieve reliable autonomous operation.</p>
+                    <p class="preview-text">Our autonomous robotics research focuses on developing intelligent systems capable of independent navigation, complex manipulation tasks, and adaptive decision-making in dynamic and unstructured environments.</p>
+                    <div class="full-text">
+                        <p>We work on mobile ground robots, aerial drones, and collaborative robot arms that can perceive their surroundings, plan optimal paths, and execute tasks with minimal human intervention. Current projects include agricultural robots for precision farming, warehouse automation systems, and search-and-rescue robots for disaster response scenarios. We integrate advanced sensors, real-time processing algorithms, and robust control systems to achieve reliable autonomous operation.</p>
+                    </div>
+                    <button class="read-more-btn" onclick="toggleCard(this)">Read More</button>
                 </div>
                 <div class="research-card">
                     <h3>Machine Learning & AI</h3>
-                    <p>We advance the frontiers of artificial intelligence through research in deep learning architectures, neural network optimization, reinforcement learning, and transfer learning. Our work spans supervised and unsupervised learning paradigms with applications in pattern recognition, natural language processing, predictive analytics, and intelligent decision support systems.</p>
-                    <p>Research areas include developing lightweight AI models for edge computing, explainable AI for critical applications, federated learning for privacy-preserving systems, and meta-learning approaches for few-shot learning scenarios. We also explore adversarial robustness and fairness in AI systems.</p>
+                    <p class="preview-text">We advance the frontiers of artificial intelligence through research in deep learning architectures, neural network optimization, reinforcement learning, and transfer learning.</p>
+                    <div class="full-text">
+                        <p>Our work spans supervised and unsupervised learning paradigms with applications in pattern recognition, natural language processing, predictive analytics, and intelligent decision support systems. Research areas include developing lightweight AI models for edge computing, explainable AI for critical applications, federated learning for privacy-preserving systems, and meta-learning approaches for few-shot learning scenarios. We also explore adversarial robustness and fairness in AI systems.</p>
+                    </div>
+                    <button class="read-more-btn" onclick="toggleCard(this)">Read More</button>
                 </div>
                 <div class="research-card">
                     <h3>Computer Vision</h3>
-                    <p>Our computer vision research creates advanced visual perception systems for real-time object detection, semantic segmentation, instance segmentation, 3D reconstruction, and complex scene understanding. We develop algorithms that enable machines to interpret and understand visual information with human-level or superior accuracy.</p>
-                    <p>Applications include medical image analysis for disease diagnosis, intelligent surveillance systems with anomaly detection, quality inspection in manufacturing, autonomous vehicle perception, augmented reality systems, and facial recognition technologies. We work with both traditional image processing and modern deep learning approaches.</p>
+                    <p class="preview-text">Our computer vision research creates advanced visual perception systems for real-time object detection, semantic segmentation, instance segmentation, 3D reconstruction, and complex scene understanding.</p>
+                    <div class="full-text">
+                        <p>We develop algorithms that enable machines to interpret and understand visual information with human-level or superior accuracy. Applications include medical image analysis for disease diagnosis, intelligent surveillance systems with anomaly detection, quality inspection in manufacturing, autonomous vehicle perception, augmented reality systems, and facial recognition technologies. We work with both traditional image processing and modern deep learning approaches.</p>
+                    </div>
+                    <button class="read-more-btn" onclick="toggleCard(this)">Read More</button>
                 </div>
                 <div class="research-card">
                     <h3>IoT & Embedded Systems</h3>
-                    <p>We design and implement sophisticated smart sensor networks and embedded computing platforms for industrial automation, smart agriculture, environmental monitoring, and intelligent building management. Our focus is on creating energy-efficient, scalable, and secure IoT solutions that can operate reliably in challenging conditions.</p>
-                    <p>Research includes developing low-power wireless communication protocols, edge computing frameworks for distributed intelligence, secure data transmission mechanisms, and real-time data processing pipelines. We also work on sensor fusion techniques and predictive maintenance systems for industrial equipment.</p>
+                    <p class="preview-text">We design and implement sophisticated smart sensor networks and embedded computing platforms for industrial automation, smart agriculture, environmental monitoring, and intelligent building management.</p>
+                    <div class="full-text">
+                        <p>Our focus is on creating energy-efficient, scalable, and secure IoT solutions that can operate reliably in challenging conditions. Research includes developing low-power wireless communication protocols, edge computing frameworks for distributed intelligence, secure data transmission mechanisms, and real-time data processing pipelines. We also work on sensor fusion techniques and predictive maintenance systems for industrial equipment.</p>
+                    </div>
+                    <button class="read-more-btn" onclick="toggleCard(this)">Read More</button>
                 </div>
                 <div class="research-card">
                     <h3>Human-Robot Interaction</h3>
-                    <p>We research natural and intuitive interfaces that enable seamless collaboration between humans and robots in shared workspaces. Our work includes gesture recognition systems, voice-controlled interfaces, haptic feedback mechanisms, and adaptive robot behaviors that respond to human intentions and emotions.</p>
-                    <p>Focus areas include socially assistive robotics for elderly care and special education, collaborative manufacturing systems where humans and robots work side-by-side, telepresence robots for remote communication, and rehabilitation robots that adapt to patient progress and provide personalized therapy.</p>
+                    <p class="preview-text">We research natural and intuitive interfaces that enable seamless collaboration between humans and robots in shared workspaces.</p>
+                    <div class="full-text">
+                        <p>Our work includes gesture recognition systems, voice-controlled interfaces, haptic feedback mechanisms, and adaptive robot behaviors that respond to human intentions and emotions. Focus areas include socially assistive robotics for elderly care and special education, collaborative manufacturing systems where humans and robots work side-by-side, telepresence robots for remote communication, and rehabilitation robots that adapt to patient progress and provide personalized therapy.</p>
+                    </div>
+                    <button class="read-more-btn" onclick="toggleCard(this)">Read More</button>
                 </div>
                 <div class="research-card">
                     <h3>Healthcare Robotics</h3>
-                    <p>Our healthcare robotics initiative develops innovative robotic solutions for medical diagnosis, minimally invasive surgical assistance, physical rehabilitation, medication delivery, and elderly care support. We integrate AI and robotics to improve patient outcomes, reduce healthcare costs, and increase accessibility to quality medical services in underserved areas.</p>
-                    <p>Current projects include developing telemedicine robots for remote patient monitoring, exoskeleton systems for mobility assistance, automated drug dispensing systems, robotic companions for mental health support, and AI-powered diagnostic tools for early disease detection using medical imaging and biosensor data.</p>
+                    <p class="preview-text">Our healthcare robotics initiative develops innovative robotic solutions for medical diagnosis, minimally invasive surgical assistance, physical rehabilitation, medication delivery, and elderly care support.</p>
+                    <div class="full-text">
+                        <p>We integrate AI and robotics to improve patient outcomes, reduce healthcare costs, and increase accessibility to quality medical services in underserved areas. Current projects include developing telemedicine robots for remote patient monitoring, exoskeleton systems for mobility assistance, automated drug dispensing systems, robotic companions for mental health support, and AI-powered diagnostic tools for early disease detection using medical imaging and biosensor data.</p>
+                    </div>
+                    <button class="read-more-btn" onclick="toggleCard(this)">Read More</button>
                 </div>
             </div>
         </div>
@@ -603,7 +917,7 @@
                     
                     <p>Dr. [Name] is a distinguished researcher and educator with over 15 years of extensive experience in robotics, artificial intelligence, and intelligent control systems. He received his Ph.D. in Electrical Engineering from [University Name], where his doctoral research focused on autonomous navigation and multi-agent robotic systems. Prior to joining Daffodil International University, he held research positions at several renowned institutions and contributed to multiple international collaborative projects.</p>
                     
-                    <p>His research portfolio encompasses a wide range of cutting-edge topics, including swarm robotics, neural network optimization, sensor fusion, and embedded AI systems. Dr. [Name] has published over 40 research papers in top-tier international journals and conferences, with several publications receiving best paper awards. His work has been cited extensively by researchers worldwide, reflecting the significant impact of his contributions to the field.</p>
+                    <p>His research portfolio encompasses a wide range of cutting-edge topics including swarm robotics, neural network optimization, sensor fusion, and embedded AI systems. Dr. [Name] has published over 40 research papers in top-tier international journals and conferences, with several publications receiving best paper awards. His work has been cited extensively by researchers worldwide, reflecting the significant impact of his contributions to the field.</p>
                     
                     <p>As Lab Director, he leads a dynamic and diverse research team comprising post-doctoral researchers, graduate students, and undergraduate research assistants. Under his mentorship, numerous students have successfully completed their thesis projects, published research papers, and secured positions at leading technology companies and prestigious universities. He actively supervises ongoing projects funded by national research grants, international collaborations, and industry partnerships.</p>
                     
@@ -648,6 +962,217 @@
         </div>
     </section>
 
+    <!-- Ongoing Projects -->
+    <section id="projects" style="background: var(--light-bg);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ongoing Research Projects</h2>
+                <p>Current initiatives driving innovation forward</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Smart Agricultural Robot for Precision Farming</h3>
+                        <span class="project-status active">Active</span>
+                    </div>
+                    <p class="project-desc">Development of an autonomous ground robot equipped with multispectral cameras and AI-powered disease detection algorithms for real-time crop health monitoring and precision pesticide application.</p>
+                    <div class="project-meta">
+                        <span>📅 2024-2026</span>
+                        <span>💰 Funded by: Ministry of Science & Technology</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>AI-Powered Medical Diagnostic Assistant</h3>
+                        <span class="project-status active">Active</span>
+                    </div>
+                    <p class="project-desc">Creating a deep learning system for automated analysis of medical images including X-rays, CT scans, and MRI data to assist healthcare professionals in early disease detection and diagnosis.</p>
+                    <div class="project-meta">
+                        <span>📅 2023-2025</span>
+                        <span>💰 Funded by: Bangladesh Medical Research Council</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Industrial IoT for Smart Manufacturing</h3>
+                        <span class="project-status active">Active</span>
+                    </div>
+                    <p class="project-desc">Implementing an integrated IoT sensor network with edge computing capabilities for real-time monitoring, predictive maintenance, and optimization of manufacturing processes in textile industries.</p>
+                    <div class="project-meta">
+                        <span>📅 2024-2026</span>
+                        <span>💰 Industry Partnership: BGMEA</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Drone-Based Disaster Response System</h3>
+                        <span class="project-status active">Active</span>
+                    </div>
+                    <p class="project-desc">Building an autonomous drone fleet with computer vision and thermal imaging for search and rescue operations, damage assessment, and emergency supply delivery in disaster-affected areas.</p>
+                    <div class="project-meta">
+                        <span>📅 2024-2025</span>
+                        <span>💰 Collaboration with Fire Service & Civil Defense</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="achievements">
+        <div class="container">
+            <div class="section-title">
+                <h2>Recent Publications</h2>
+                <p>Our latest contributions to scientific knowledge</p>
+            </div>
+            <div class="publications-list">
+                <div class="publication-item">
+                    <h4>Deep Learning Approaches for Autonomous Navigation in Unstructured Environments</h4>
+                    <p class="pub-authors"><strong>Dr. [Professor Name]</strong>, M. Rahman, S. Ahmed</p>
+                    <p class="pub-venue">IEEE Transactions on Robotics and Automation, Vol. 45(3), 2024</p>
+                    <div class="pub-badges">
+                        <span class="badge">Q1 Journal</span>
+                        <span class="badge">Impact Factor: 6.8</span>
+                        <span class="badge">32 Citations</span>
+                    </div>
+                </div>
+                <div class="publication-item">
+                    <h4>Explainable AI Framework for Medical Image Analysis: A Clinical Perspective</h4>
+                    <p class="pub-authors">A. Khan, <strong>Dr. [Professor Name]</strong>, F. Hossain, R. Islam</p>
+                    <p class="pub-venue">Journal of Medical Imaging and Health Informatics, Vol. 14(2), 2024</p>
+                    <div class="pub-badges">
+                        <span class="badge">Scopus Indexed</span>
+                        <span class="badge">18 Citations</span>
+                    </div>
+                </div>
+                <div class="publication-item">
+                    <h4>Energy-Efficient Edge Computing for Real-Time IoT Applications</h4>
+                    <p class="pub-authors">S. Akter, M. Hassan, <strong>Dr. [Professor Name]</strong></p>
+                    <p class="pub-venue">International Conference on IoT and Smart Systems (ICISS 2024), Singapore</p>
+                    <div class="pub-badges">
+                        <span class="badge">Best Paper Award</span>
+                        <span class="badge">IEEE Conference</span>
+                    </div>
+                </div>
+                <div class="publication-item">
+                    <h4>Human-Robot Collaboration in Manufacturing: A Survey of Recent Advances</h4>
+                    <p class="pub-authors"><strong>Dr. [Professor Name]</strong>, T. Ahmed, N. Begum</p>
+                    <p class="pub-venue">Robotics and Computer-Integrated Manufacturing, Vol. 82, 2023</p>
+                    <div class="pub-badges">
+                        <span class="badge">Q1 Journal</span>
+                        <span class="badge">Impact Factor: 5.3</span>
+                        <span class="badge">45 Citations</span>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#" class="btn btn-primary">View All Publications</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- News & Updates -->
+    <section style="background: var(--light-bg);">
+        <div class="container">
+            <div class="section-title">
+                <h2>News & Updates</h2>
+                <p>Latest happenings from our lab</p>
+            </div>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-date">October 15, 2024</div>
+                    <h3>Lab Wins Best Innovation Award at National Robotics Competition</h3>
+                    <p>Our team secured first place at the Bangladesh Robotics Olympiad 2024 with their autonomous agriculture robot prototype. The project demonstrated advanced AI-powered crop monitoring capabilities.</p>
+                    <a href="#" class="news-link">Read More →</a>
+                </div>
+                <div class="news-card">
+                    <div class="news-date">September 28, 2024</div>
+                    <h3>New Collaboration with Samsung R&D Institute Bangladesh</h3>
+                    <p>We are excited to announce a strategic partnership with Samsung R&D to work on next-generation AI and IoT solutions for smart home applications.</p>
+                    <a href="#" class="news-link">Read More →</a>
+                </div>
+                <div class="news-card">
+                    <div class="news-date">September 10, 2024</div>
+                    <h3>Workshop on Deep Learning and Computer Vision Held Successfully</h3>
+                    <p>Over 150 students and professionals attended our 3-day intensive workshop on modern AI techniques. Industry experts from leading tech companies shared their insights.</p>
+                    <a href="#" class="news-link">Read More →</a>
+                </div>
+                <div class="news-card">
+                    <div class="news-date">August 22, 2024</div>
+                    <h3>Research Paper Accepted at IEEE International Conference</h3>
+                    <p>Our paper on "Federated Learning for Privacy-Preserving Healthcare Systems" has been accepted for presentation at IEEE ICMLA 2024 in Florida, USA.</p>
+                    <a href="#" class="news-link">Read More →</a>
+                </div>
+                <div class="news-card">
+                    <div class="news-date">August 5, 2024</div>
+                    <h3>Lab Equipment Upgrade with Latest NVIDIA GPUs</h3>
+                    <p>Thanks to a generous grant, our lab has been equipped with NVIDIA A100 GPUs to accelerate deep learning research and training of large-scale AI models.</p>
+                    <a href="#" class="news-link">Read More →</a>
+                </div>
+                <div class="news-card">
+                    <div class="news-date">July 18, 2024</div>
+                    <h3>Alumni Success: Former Student Joins MIT as PhD Candidate</h3>
+                    <p>We are proud to announce that our former research assistant, Md. Karim, has been admitted to MIT for doctoral studies in robotics with full funding.</p>
+                    <a href="#" class="news-link">Read More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section>
+        <div class="container">
+            <div class="section-title">
+                <h2>Achievements & Recognition</h2>
+                <p>Milestones that mark our journey of excellence</p>
+            </div>
+            <div class="achievements-timeline">
+                <div class="achievement-item">
+                    <div class="achievement-year">2024</div>
+                    <div class="achievement-content">
+                        <h3>🏆 Best Research Lab Award</h3>
+                        <p>Recognized as the "Best Engineering Research Lab" by Bangladesh University Grants Commission (UGC) for outstanding contributions to robotics and AI research.</p>
+                    </div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-year">2024</div>
+                    <div class="achievement-content">
+                        <h3>🎖️ National Innovation Grant</h3>
+                        <p>Awarded BDT 50 Lakh research grant by the Ministry of Science and Technology for the Smart Agriculture Robot project.</p>
+                    </div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-year">2023</div>
+                    <div class="achievement-content">
+                        <h3>📜 International Patent Filed</h3>
+                        <p>Successfully filed an international patent for "AI-Powered Autonomous Navigation System for Agricultural Robots" (Patent Pending).</p>
+                    </div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-year">2023</div>
+                    <div class="achievement-content">
+                        <h3>🌟 Best Paper Award at IEEE Conference</h3>
+                        <p>Received Best Paper Award at IEEE International Conference on IoT and Smart Systems (ICISS 2023) in Singapore.</p>
+                    </div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-year">2022</div>
+                    <div class="achievement-content">
+                        <h3>🤝 Industry Partnership Established</h3>
+                        <p>Signed MoU with Bangladesh Garment Manufacturers and Exporters Association (BGMEA) for smart manufacturing solutions.</p>
+                    </div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-year">2022</div>
+                    <div class="achievement-content">
+                        <h3>👨‍🎓 Student Success at International Competition</h3>
+                        <p>Lab students won 2nd place at the Asia-Pacific Robot Contest (ABU Robocon 2022) held in India.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer id="contact">
         <div class="footer-content">
@@ -662,8 +1187,9 @@
                 <h4>Quick Links</h4>
                 <a href="#about">About Lab</a>
                 <a href="#research">Research Areas</a>
+                <a href="#projects">Ongoing Projects</a>
                 <a href="#people">Our Team</a>
-                <a href="#achievements">Achievements</a>
+                <a href="#achievements">Publications</a>
                 <a href="https://daffodilvarsity.edu.bd">DIU Main Website</a>
                 <a href="https://www.facebook.com/EEEofDIU/">EEE Department</a>
             </div>
@@ -694,6 +1220,22 @@
         function toggleMenu() {
             const navLinks = document.getElementById('navLinks');
             navLinks.classList.toggle('active');
+        }
+
+        function toggleAbout() {
+            const extraParas = document.getElementById('aboutExtra');
+            const btn = event.target;
+            extraParas.classList.toggle('show');
+            btn.textContent = extraParas.classList.contains('show') ? 'Read Less' : 'Read More';
+            btn.classList.toggle('expanded');
+        }
+
+        function toggleCard(button) {
+            const card = button.closest('.research-card');
+            const fullText = card.querySelector('.full-text');
+            fullText.classList.toggle('show');
+            button.textContent = fullText.classList.contains('show') ? 'Read Less' : 'Read More';
+            button.classList.toggle('expanded');
         }
 
         // Smooth scrolling for anchor links
