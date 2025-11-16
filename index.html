@@ -1,773 +1,617 @@
-<!-- index.html-->
+<--index.html-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Research Portfolio - Sudipto Pramanik</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Libre+Baskerville:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         :root {
-            --primary: #002855;
-            --secondary: #0066cc;
-            --accent: #00a8e8;
-            --text: #1a1a1a;
-            --light-bg: #f8f9fa;
+            --primary: #0a3d62;
+            --secondary: #1e90ff;
+            --accent: #00bfff;
+            --gold: #d4af37;
+            --text: #2c2c2c;
+            --light-bg: #f9f9fb;
             --white: #ffffff;
-            --border: #e0e0e0;
+            --border: #e2e2e2;
+            --shadow: 0 8px 25px rgba(10, 61, 98, 0.12);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--text);
-            line-height: 1.6;
-            background-color: var(--white);
-        }
-
-        /* Header & Navigation */
-        header {
-            background: linear-gradient(135deg, var(--primary) 0%, #003d7a 100%);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .top-bar {
-            background: rgba(0,0,0,0.2);
-            padding: 8px 0;
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.9);
-        }
-
-        .top-bar .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        nav {
-            background: var(--primary);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 15px 0;
-        }
-
-        .logo-text {
-            color: var(--white);
-        }
-
-        .logo-text h1 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 2px;
-        }
-
-        .logo-text p {
-            font-size: 0.75rem;
-            opacity: 0.9;
-            font-weight: 300;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 5px;
-        }
-
-        .nav-links a {
-            color: var(--white);
-            text-decoration: none;
-            padding: 10px 18px;
-            border-radius: 4px;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            background: rgba(255,255,255,0.15);
-        }
-
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--white);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, rgba(0,40,85,0.95) 0%, rgba(0,102,204,0.9) 100%),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%23003d7a" width="1200" height="400"/><path fill="%23004d99" opacity="0.3" d="M0,200 Q300,100 600,200 T1200,200 L1200,400 L0,400 Z"/></svg>');
-            background-size: cover;
-            background-position: center;
-            color: var(--white);
-            padding: 100px 20px;
-            text-align: center;
-        }
-
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .hero h2 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 40px;
-            opacity: 0.95;
-            font-weight: 300;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 14px 35px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-block;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Source Sans Pro', sans-serif; 
+            color: var(--text); 
+            line-height: 1.7; 
+            background: var(--white); 
             font-size: 1rem;
         }
 
-        .btn-primary {
-            background: var(--white);
-            color: var(--primary);
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 { 
+            font-family: 'Playfair Display', serif; 
+            color: var(--primary); 
+            letter-spacing: 0.5px;
+            margin-bottom: 0.8rem;
         }
-
-        .btn-primary:hover {
-            background: var(--light-bg);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        .section-title h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.8rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
         }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--white);
-            border: 2px solid var(--white);
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            border-radius: 2px;
         }
+        p { margin-bottom: 1rem; }
 
-        .btn-outline:hover {
-            background: var(--white);
-            color: var(--primary);
+        /* Header */
+        header { 
+            background: linear-gradient(135deg, var(--primary) 0%, #0f5a8a 100%); 
+            box-shadow: 0 4px 20px rgba(10, 61, 98, 0.2); 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+        }
+        .top-bar { 
+            background: rgba(0,0,0,0.25); 
+            padding: 10px 0; 
+            font-size: 0.9rem; 
+            color: rgba(255,255,255,0.95); 
+            font-weight: 300;
+        }
+        .top-bar .container { 
+            max-width: 1300px; 
+            margin: 0 auto; 
+            padding: 0 25px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        nav { background: transparent; }
+        .nav-container { 
+            max-width: 1300px; 
+            margin: 0 auto; 
+            padding: 0 25px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .logo { display: flex; align-items: center; gap: 18px; padding: 18px 0; }
+        .logo-text h1 { 
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            color: var(--white); 
+            font-family: 'Libre Baskerville', serif;
+        }
+        .logo-text p { 
+            font-size: 0.8rem; 
+            opacity: 0.9; 
+            font-weight: 300; 
+            color: var(--white); 
+            letter-spacing: 1px;
+        }
+        .nav-links { display: flex; list-style: none; gap: 8px; }
+        .nav-links a { 
+            color: var(--white); 
+            text-decoration: none; 
+            padding: 12px 22px; 
+            border-radius: 6px; 
+            font-weight: 500; 
+            font-size: 1rem; 
+            transition: var(--transition); 
+            position: relative;
+        }
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+        .nav-links a:hover::before, .nav-links a.active::before { width: 60%; }
+        .nav-links a:hover, .nav-links a.active { background: rgba(255,255,255,0.15); }
+        .menu-toggle { display: none; background: none; border: none; color: var(--white); font-size: 1.7rem; cursor: pointer; }
+
+        /* Hero */
+        .hero { 
+            background: linear-gradient(135deg, rgba(10,61,98,0.96) 0%, rgba(15,90,138,0.92) 100%), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 500"><rect fill="%230f5a8a" width="1400" height="500"/><path fill="%231e90ff" opacity="0.15" d="M0,250 Q350,150 700,250 T1400,250 L1400,500 L0,500 Z"/></svg>');
+            background-size: cover; 
+            color: var(--white); 
+            padding: 130px 25px; 
+            text-align: center; 
+        }
+        .hero-content { max-width: 1000px; margin: 0 auto; }
+        .hero h2 { 
+            font-size: 3.5rem; 
+            font-weight: 700; 
+            margin-bottom: 22px; 
+            line-height: 1.2; 
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .hero p { 
+            font-size: 1.35rem; 
+            margin-bottom: 45px; 
+            opacity: 0.95; 
+            font-weight: 300; 
+            max-width: 800px; 
+            margin-left: auto; 
+            margin-right: auto;
+        }
+        .hero-buttons { display: flex; gap: 25px; justify-content: center; flex-wrap: wrap; }
+        .btn { 
+            padding: 16px 38px; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            font-weight: 600; 
+            transition: var(--transition); 
+            display: inline-block; 
+            font-size: 1.05rem; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        .btn-primary { 
+            background: var(--gold); 
+            color: var(--primary); 
+            border: 2px solid var(--gold);
+        }
+        .btn-primary:hover { 
+            background: transparent; 
+            color: var(--gold); 
+            transform: translateY(-3px); 
+            box-shadow: 0 8px 25px rgba(212,175,55,0.3);
+        }
+        .btn-outline { 
+            background: transparent; 
+            color: var(--white); 
+            border: 2px solid var(--white); 
+        }
+        .btn-outline:hover { 
+            background: var(--white); 
+            color: var(--primary); 
+            transform: translateY(-3px);
         }
 
         /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        .container { max-width: 1300px; margin: 0 auto; padding: 0 25px; }
+        section { padding: 100px 25px; }
+        .section-title { text-align: center; margin-bottom: 70px; }
+        .section-title p { font-size: 1.15rem; color: #666; max-width: 750px; margin: 0 auto; font-weight: 300; }
 
-        /* Sections */
-        section {
-            padding: 90px 20px;
+        /* About Me */
+        .director-section { background: var(--light-bg); }
+        .director-container { 
+            display: flex; 
+            gap: 60px; 
+            align-items: flex-start; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            flex-wrap: wrap; 
+            justify-content: center; 
         }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
+        .director-image { flex: 0 0 300px; text-align: center; }
+        .director-image img { 
+            width: 300px; 
+            height: 300px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            box-shadow: var(--shadow); 
+            border: 6px solid var(--white); 
+            transition: var(--transition);
         }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-weight: 700;
+        .director-image img:hover { transform: scale(1.03); }
+        .director-info { flex: 1; min-width: 320px; }
+        .director-info h3 { font-size: 2.3rem; margin-bottom: 8px; }
+        .director-info .title { font-size: 1.3rem; color: var(--secondary); margin-bottom: 6px; font-weight: 600; }
+        .director-info .dept { color: #555; margin-bottom: 28px; font-size: 1.05rem; }
+        .director-info p { line-height: 1.9; color: #444; margin-bottom: 22px; font-size: 1.05rem; }
+        .research-interests { margin-top: 25px; }
+        .research-interests h4 { color: var(--primary); margin-bottom: 15px; font-size: 1.2rem; }
+        .interests-list { display: flex; flex-wrap: wrap; gap: 12px; }
+        .interest-tag { 
+            background: var(--white); 
+            padding: 10px 18px; 
+            border-radius: 25px; 
+            font-size: 0.95rem; 
+            color: var(--primary); 
+            border: 1px solid var(--border); 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: var(--transition);
         }
+        .interest-tag:hover { background: var(--secondary); color: white; transform: translateY(-2px); }
 
-        .section-title p {
-            font-size: 1.1rem;
-            color: #666;
-            max-width: 700px;
-            margin: 0 auto;
-        }
+        .director-actions { display: flex; gap: 18px; margin-top: 30px; flex-wrap: wrap; }
+        .director-actions .btn { padding: 13px 30px; font-size: 1rem; }
 
-        /* About Preview */
-        .about-preview {
-            background: var(--light-bg);
-        }
-
-        .about-content {
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .about-content p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 20px;
-            color: #444;
-        }
-
-        .about-content .preview-para {
-            display: block;
-        }
-
-        .about-content .extra-paras {
-            display: none;
-        }
-
-        .about-content .extra-paras.show {
-            display: block;
-        }
-
-        /* Research Highlights */
-        .research-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .research-card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 35px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            border-top: 4px solid var(--secondary);
-        }
-
-        .research-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-        }
-
-        .research-card h3 {
-            color: var(--primary);
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .research-card p {
-            color: #555;
-            line-height: 1.7;
-            margin-bottom: 12px;
-        }
-
-        .research-card .preview-text {
-            display: block;
-        }
-
-        .research-card .full-text {
-            display: none;
-            margin-top: 12px;
-        }
-
-        .research-card .full-text.show {
-            display: block;
-        }
-
-        .read-more-btn {
-            background: none;
-            border: none;
-            color: var(--secondary);
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 0.95rem;
-            padding: 8px 0;
-            margin-top: 8px;
-            transition: color 0.3s ease;
-        }
-
-        .read-more-btn:hover {
-            color: var(--primary);
-        }
-
-        .read-more-btn::after {
-            content: ' ↓';
-        }
-
-        .read-more-btn.expanded::after {
-            content: ' ↑';
-        }
-
-        /* Director Section */
-        .director-section {
-            background: var(--white);
-        }
-
-        .director-container {
-            display: flex;
-            gap: 50px;
-            align-items: flex-start;
-            max-width: 1100px;
-            margin: 0 auto;
+        /* Social Icons */
+        .social-icons { 
+            display: flex; 
+            gap: 18px; 
+            margin-top: 35px; 
+            justify-content: center; 
             flex-wrap: wrap;
-            justify-content: center;
         }
-
-        .director-image {
-            flex: 0 0 280px;
-            text-align: center;
+        .social-icons a { 
+            color: var(--white); 
+            background: var(--primary); 
+            width: 50px; 
+            height: 50px; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 1.3rem; 
+            transition: var(--transition); 
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(10,61,98,0.2);
         }
-
-        .director-image img {
-            width: 280px;
-            height: 280px;
-            border-radius: 12px;
-            object-fit: cover;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-            border: 5px solid var(--white);
+        .social-icons a::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--gold);
+            transform: scale(0);
+            transition: var(--transition);
+            border-radius: 50%;
         }
+        .social-icons a:hover::before { transform: scale(1); }
+        .social-icons a:hover { color: var(--primary); transform: translateY(-4px); box-shadow: 0 8px 25px rgba(212,175,55,0.3); }
+        .social-icons a i { position: relative; z-index: 1; }
 
-        .director-info {
-            flex: 1;
-            min-width: 300px;
+        /* Education */
+        .education-section .timeline { max-width: 1000px; margin: 0 auto; position: relative; padding-left: 60px; }
+        .education-section .timeline::before { 
+            content: ''; 
+            position: absolute; 
+            left: 22px; 
+            top: 0; 
+            bottom: 0; 
+            width: 4px; 
+            background: linear-gradient(to bottom, var(--secondary), var(--accent)); 
+            border-radius: 2px;
         }
-
-        .director-info h3 {
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .director-info .title {
-            font-size: 1.2rem;
-            color: var(--secondary);
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .director-info .dept {
-            color: #666;
-            margin-bottom: 25px;
-            font-size: 1rem;
-        }
-
-        .director-info p {
-            line-height: 1.8;
-            color: #444;
-            margin-bottom: 20px;
-        }
-
-        .research-interests {
-            margin-top: 20px;
-        }
-
-        .research-interests h4 {
-            color: var(--primary);
-            margin-bottom: 12px;
-            font-size: 1.1rem;
-        }
-
-        .interests-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .interest-tag {
-            background: var(--light-bg);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            color: var(--primary);
-            border: 1px solid var(--border);
-        }
-
-        /* Stats Section */
-        .stats {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: var(--white);
-            padding: 60px 20px;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .stat-item h3 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .stat-item p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        /* Projects Grid */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .project-card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            border-left: 4px solid var(--secondary);
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-        }
-
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 15px;
-            gap: 15px;
-        }
-
-        .project-header h3 {
-            color: var(--primary);
-            font-size: 1.3rem;
-            font-weight: 600;
-            line-height: 1.3;
-            flex: 1;
-        }
-
-        .project-status {
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            white-space: nowrap;
-        }
-
-        .project-status.active {
-            background: #d4edda;
-            color: #155724;
-        }
-
-        .project-desc {
-            color: #555;
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
-
-        .project-meta {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        /* Publications */
-        .publications-list {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .publication-item {
+        .edu-item { 
+            position: relative; 
+            margin-bottom: 50px; 
+            display: flex; 
+            gap: 35px; 
             background: var(--white);
             padding: 30px;
-            border-radius: 10px;
-            margin-bottom: 25px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
-            border-left: 4px solid var(--accent);
-            transition: all 0.3s ease;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
         }
-
-        .publication-item:hover {
-            box-shadow: 0 4px 25px rgba(0,0,0,0.12);
-            transform: translateX(5px);
+        .edu-item:hover { transform: translateY(-5px); box-shadow: 0 12px 35px rgba(10,61,98,0.15); }
+        .edu-item::before { 
+            content: ''; 
+            position: absolute; 
+            left: -48px; 
+            top: 8px; 
+            width: 18px; 
+            height: 18px; 
+            border-radius: 50%; 
+            background: var(--gold); 
+            border: 4px solid var(--white); 
+            box-shadow: 0 0 0 4px var(--light-bg);
         }
-
-        .publication-item h4 {
-            color: var(--primary);
-            font-size: 1.2rem;
-            margin-bottom: 12px;
-            font-weight: 600;
-            line-height: 1.4;
+        .edu-year { 
+            font-size: 1.2rem; 
+            font-weight: 700; 
+            color: var(--secondary); 
+            min-width: 80px; 
+            text-align: center;
+            padding-top: 5px;
         }
+        .edu-content { flex: 1; }
+        .edu-content h3 { font-size: 1.5rem; margin-bottom: 10px; }
+        .edu-content .degree { color: var(--secondary); font-weight: 600; margin-bottom: 12px; font-size: 1.1rem; }
+        .edu-content p { color: #555; font-size: 1.02rem; }
 
-        .pub-authors {
-            color: #555;
-            margin-bottom: 8px;
-            font-size: 0.95rem;
-        }
-
-        .pub-venue {
-            color: #777;
-            font-style: italic;
-            margin-bottom: 15px;
-            font-size: 0.9rem;
-        }
-
-        .pub-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .badge {
-            background: var(--light-bg);
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            color: var(--primary);
+        /* TOEFL */
+        .score-section { background: var(--white); text-align: center; }
+        .score-card { 
+            max-width: 600px; 
+            margin: 0 auto; 
+            background: linear-gradient(145deg, #f8f9ff, #ffffff); 
+            padding: 45px; 
+            border-radius: 20px; 
+            box-shadow: var(--shadow); 
             border: 1px solid var(--border);
         }
-
-        /* News Grid */
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
+        .score-card img { 
+            width: 100%; 
+            max-width: 280px; 
+            height: auto; 
+            margin-bottom: 25px; 
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.1)); 
+            display: block; 
+            margin-left: auto; 
+            margin-right: auto;
         }
-
-        .news-card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
+        .score-card h3 { font-size: 2.2rem; color: var(--primary); margin-bottom: 18px; }
+        .score-grid { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 18px; 
+            text-align: left; 
+            margin-top: 25px;
         }
-
-        .news-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        .score-item { 
+            background: var(--light-bg); 
+            padding: 15px 18px; 
+            border-radius: 12px; 
+            border-left: 4px solid var(--gold);
+            transition: var(--transition);
         }
+        .score-item:hover { background: var(--white); box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+        .score-item strong { color: var(--primary); font-size: 1.05rem; }
 
-        .news-date {
-            color: var(--secondary);
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 12px;
+        /* Research */
+        .research-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 35px; 
+            max-width: 1300px; 
+            margin: 0 auto; 
         }
-
-        .news-card h3 {
-            color: var(--primary);
-            font-size: 1.2rem;
+        .research-card { 
+            background: var(--white); 
+            border-radius: 18px; 
+            padding: 35px; 
+            box-shadow: var(--shadow); 
+            border-left: 5px solid var(--gold); 
+            transition: var(--transition); 
+            position: relative;
+            overflow: hidden;
+        }
+        .research-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+        }
+        .research-card:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 15px 40px rgba(10,61,98,0.18); 
+        }
+        .research-card h3 { 
+            color: var(--primary); 
+            font-size: 1.35rem; 
+            font-weight: 600; 
             margin-bottom: 15px;
-            font-weight: 600;
-            line-height: 1.4;
+        }
+        .research-card p { 
+            color: #555; 
+            line-height: 1.8; 
+            font-size: 1.02rem;
         }
 
-        .news-card p {
-            color: #555;
-            line-height: 1.7;
+        /* Projects */
+        .projects-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); 
+            gap: 35px; 
+            max-width: 1300px; 
+            margin: 0 auto; 
+        }
+        .project-card { 
+            background: var(--white); 
+            border-radius: 18px; 
+            padding: 35px; 
+            box-shadow: var(--shadow); 
+            border-left: 5px solid var(--gold); 
+            transition: var(--transition); 
+            position: relative;
+            overflow: hidden;
+        }
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+        }
+        .project-card:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 15px 40px rgba(10,61,98,0.18); 
+        }
+        .project-header { margin-bottom: 18px; }
+        .project-header h3 { 
+            color: var(--primary); 
+            font-size: 1.35rem; 
+            font-weight: 600; 
+            line-height: 1.4; 
+        }
+        .project-desc { 
+            color: #555; 
+            line-height: 1.8; 
+            margin-bottom: 22px; 
+            font-size: 1.02rem;
+        }
+        .project-meta { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 10px; 
+            font-size: 0.95rem; 
+            color: #666; 
             margin-bottom: 15px;
         }
-
-        .news-link {
+        .project-meta span { display: flex; align-items: center; gap: 8px; }
+        .project-meta i { color: var(--secondary); width: 18px; }
+        .project-links { 
+            display: flex; 
+            gap: 15px; 
+            flex-wrap: wrap; 
+            margin-top: 18px;
+        }
+        .project-links a {
             color: var(--secondary);
             font-weight: 600;
             text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .news-link:hover {
-            color: var(--primary);
-        }
-
-        /* Achievements Timeline */
-        .achievements-timeline {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            padding-left: 50px;
-        }
-
-        .achievements-timeline::before {
-            content: '';
-            position: absolute;
-            left: 15px;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(to bottom, var(--secondary), var(--accent));
-        }
-
-        .achievement-item {
-            position: relative;
-            margin-bottom: 40px;
+            font-size: 0.95rem;
             display: flex;
-            gap: 30px;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
         }
+        .project-links a:hover { color: var(--primary); transform: translateX(3px); }
+        .project-links a i { font-size: 1.1rem; }
 
-        .achievement-item::before {
-            content: '';
-            position: absolute;
-            left: -42px;
-            top: 5px;
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            background: var(--secondary);
-            border: 3px solid var(--white);
-            box-shadow: 0 0 0 3px var(--light-bg);
+        /* Awards */
+        .achievements-timeline { max-width: 1000px; margin: 0 auto; position: relative; padding-left: 60px; }
+        .achievements-timeline::before { 
+            content: ''; 
+            position: absolute; 
+            left: 22px; 
+            top: 0; 
+            bottom: 0; 
+            width: 4px; 
+            background: linear-gradient(to bottom, var(--gold), var(--accent)); 
+            border-radius: 2px;
         }
-
-        .achievement-year {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--secondary);
-            min-width: 60px;
-        }
-
-        .achievement-content {
-            flex: 1;
+        .achievement-item { 
+            position: relative; 
+            margin-bottom: 50px; 
+            display: flex; 
+            gap: 35px; 
             background: var(--white);
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
         }
+        .achievement-item:hover { transform: translateY(-5px); }
+        .achievement-item::before { 
+            content: ''; 
+            position: absolute; 
+            left: -48px; 
+            top: 8px; 
+            width: 18px; 
+            height: 18px; 
+            border-radius: 50%; 
+            background: var(--gold); 
+            border: 4px solid var(--white); 
+            box-shadow: 0 0 0 4px var(--light-bg);
+        }
+        .achievement-year { 
+            font-size: 1.2rem; 
+            font-weight: 700; 
+            color: var(--gold); 
+            min-width: 80px; 
+            text-align: center;
+            padding-top: 5px;
+        }
+        .achievement-content h3 { font-size: 1.4rem; margin-bottom: 12px; }
+        .achievement-content p { color: #555; line-height: 1.8; font-size: 1.02rem; }
 
-        .achievement-content h3 {
-            color: var(--primary);
-            font-size: 1.3rem;
-            margin-bottom: 12px;
+                .achievement-item:hover {
+            background: var(--light-bg);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .achievement-year {
+            font-size: 1.2rem; 
             font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 8px;
         }
-
-        .achievement-content p {
-            color: #555;
-            line-height: 1.7;
-        }
+        .achievement-content h3 { font-weight: 600; margin-bottom: 10px; }
+        .achievement-content p { color: #555; line-height: 1.6; }
 
         /* Footer */
-        footer {
-            background: var(--primary);
-            color: var(--white);
-            padding: 50px 20px 20px;
+        footer { 
+            background: linear-gradient(135deg, var(--primary) 0%, #0f5a8a 100%); 
+            color: var(--white); 
+            padding: 70px 25px 30px; 
         }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 30px;
+        .footer-content { 
+            max-width: 1300px; 
+            margin: 0 auto; 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+            gap: 50px; 
+            margin-bottom: 40px; 
         }
-
-        .footer-section h4 {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            font-weight: 600;
+        .footer-section h4 { 
+            font-size: 1.35rem; 
+            margin-bottom: 25px; 
+            font-weight: 600; 
+            position: relative;
+            padding-bottom: 12px;
         }
-
-        .footer-section p,
-        .footer-section a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            display: block;
-            margin-bottom: 10px;
-            font-size: 0.95rem;
+        .footer-section h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--gold);
         }
-
-        .footer-section a:hover {
-            color: var(--white);
+        .footer-section p, .footer-section a { 
+            color: rgba(255,255,255,0.85); 
+            text-decoration: none; 
+            display: block; 
+            margin-bottom: 12px; 
+            font-size: 1rem; 
+            transition: var(--transition);
         }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.7);
-            font-size: 0.9rem;
+        .footer-section a:hover { color: var(--gold); padding-left: 5px; }
+        .footer-bottom { 
+            text-align: center; 
+            padding-top: 35px; 
+            border-top: 1px solid rgba(255,255,255,0.15); 
+            color: rgba(255,255,255,0.7); 
+            font-size: 0.95rem; 
         }
 
         /* Responsive */
+        @media (max-width: 992px) {
+            .director-container { flex-direction: column; text-align: center; }
+            .director-image { flex: none; }
+            .hero h2 { font-size: 2.8rem; }
+            .section-title h2 { font-size: 2.3rem; }
+        }
         @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
+            .menu-toggle { display: block; }
+            .nav-links { 
+                display: none; 
+                position: absolute; 
+                top: 100%; 
+                left: 0; 
+                right: 0; 
+                background: var(--primary); 
+                flex-direction: column; 
+                padding: 25px; 
+                gap: 0; 
+                box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             }
-
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--primary);
-                flex-direction: column;
-                padding: 20px;
-                gap: 0;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links a {
-                padding: 15px;
-                border-bottom: 1px solid rgba(255,255,255,0.1);
-            }
-
-            .hero h2 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .director-container {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .director-image {
-                flex: none;
-            }
-
-            .section-title h2 {
-                font-size: 2rem;
-            }
+            .nav-links.active { display: flex; }
+            .nav-links a { padding: 18px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            .hero h2 { font-size: 2.3rem; }
+            .hero p { font-size: 1.15rem; }
+            .section-title h2 { font-size: 2.1rem; }
+            .edu-item, .achievement-item { flex-direction: column; padding-left: 20px; }
+            .edu-item::before, .achievement-item::before { left: -35px; }
+            .education-section .timeline, .achievements-timeline { padding-left: 40px; }
+            .education-section .timeline::before, .achievements-timeline::before { left: 15px; }
+            .score-card img { max-width: 200px; }
         }
     </style>
 </head>
@@ -776,7 +620,7 @@
     <header>
         <div class="top-bar">
             <div class="container">
-                <div>📧 robotics.lab@diu.edu.bd | 📞 01790467463</div>
+                <div><i class="fas fa-envelope"></i> sudipto.eee0247.c@diu.edu.bd | <i class="fas fa-phone"></i> 01303249802</div>
                 <div><a href="https://daffodilvarsity.edu.bd" style="color: inherit; text-decoration: none;">Daffodil International University</a></div>
             </div>
         </div>
@@ -788,469 +632,486 @@
                         <p>Department of EEE | Daffodil International University</p>
                     </div>
                 </div>
-                <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+                <button class="menu-toggle" onclick="toggleMenu()">Menu</button>
                 <ul class="nav-links" id="navLinks">
                     <li><a href="#" class="active">Home</a></li>
-                    <li><a href="#about">About</a></li>
+                    <li><a href="#people">About</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#score">TOEFL</a></li>
                     <li><a href="#research">Research</a></li>
                     <li><a href="#projects">Projects</a></li>
-                    <li><a href="#people">People</a></li>
-                    <li><a href="#achievements">Publications</a></li>
+                    <li><a href="#awards">Awards</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h2>Pioneering Innovation in Robotics & AI</h2>
-            <p>Advancing cutting-edge research in autonomous systems, machine learning, and intelligent robotics at Daffodil International University</p>
-            <div class="hero-buttons">
-                <a href="#research" class="btn btn-primary">Explore Research</a>
-                <a href="#contact" class="btn btn-outline">Join Our Team</a>
-            </div>
+    <!-- Hero (Home) -->
+    <section class="hero" id="home">
+    <div class="hero-content">
+        <h2 style="color: whitesmoke;">Pioneering Innovation in AI & Machine Learning</h2>
+        <p>Advancing cutting-edge research in deep learning, natural language processing, and signal processing at Daffodil International University</p>
+        <div class="hero-buttons">
+            <a href="#research" class="btn btn-primary">Explore Research</a>
+            <a href="#contact" class="btn btn-outline">Contact Me</a>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- About Preview -->
-    <section class="about-preview" id="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>About Our Lab</h2>
-                <p>Leading research and innovation in robotics and artificial intelligence</p>
-            </div>
-            <div class="about-content">
-                <p class="preview-para">The Advanced Robotics & AI Lab at Daffodil International University is dedicated to pushing the boundaries of intelligent systems and autonomous technologies. Established with a vision to become a center of excellence in robotics and AI research, our lab serves as a bridge between academic innovation and practical applications that address real-world challenges.</p>
-                
-                <div class="extra-paras" id="aboutExtra">
-                    <p>Our multidisciplinary team comprises experienced faculty members, dedicated research scholars, and enthusiastic undergraduate students who work collaboratively on cutting-edge projects. We focus on solving complex problems through innovative research in machine learning, computer vision, robotic systems, and intelligent control algorithms. The lab is equipped with state-of-the-art facilities including advanced computing infrastructure, robotic platforms, sensor networks, and prototyping equipment.</p>
-                    
-                    <p>We actively collaborate with leading industry partners, government organizations, and international research institutions to develop solutions that address critical needs in healthcare, manufacturing, agriculture, environmental monitoring, and smart cities. Our research projects are often interdisciplinary in nature, combining expertise from electrical engineering, computer science, mechanical engineering, and other domains to create comprehensive solutions.</p>
-                    
-                    <p>The lab provides students with invaluable hands-on experience in cutting-edge technologies, preparing them to become leaders and innovators in the rapidly evolving field of AI and robotics. Through research assistantships, project-based learning, and participation in national and international competitions, students gain practical skills that complement their academic knowledge. Many of our alumni have gone on to pursue advanced degrees at prestigious universities or have joined leading technology companies worldwide.</p>
-                    
-                    <p>Our commitment extends beyond research publications to creating tangible impact in society. We regularly organize workshops, seminars, and training programs to disseminate knowledge and foster a culture of innovation within the university and broader community. The lab also serves as an incubation space for student-led startups and entrepreneurial initiatives in the robotics and AI domain.</p>
-                </div>
-                
-                <button class="read-more-btn" onclick="toggleAbout()">Read More</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Research Highlights -->
-    <section id="research">
-        <div class="container">
-            <div class="section-title">
-                <h2>Research Focus Areas</h2>
-                <p>Exploring frontier technologies that shape tomorrow</p>
-            </div>
-            <div class="research-grid">
-                <div class="research-card">
-                    <h3>Autonomous Robotics</h3>
-                    <p class="preview-text">Our autonomous robotics research focuses on developing intelligent systems capable of independent navigation, complex manipulation tasks, and adaptive decision-making in dynamic and unstructured environments.</p>
-                    <div class="full-text">
-                        <p>We work on mobile ground robots, aerial drones, and collaborative robot arms that can perceive their surroundings, plan optimal paths, and execute tasks with minimal human intervention. Current projects include agricultural robots for precision farming, warehouse automation systems, and search-and-rescue robots for disaster response scenarios. We integrate advanced sensors, real-time processing algorithms, and robust control systems to achieve reliable autonomous operation.</p>
-                    </div>
-                    <button class="read-more-btn" onclick="toggleCard(this)">Read More</button>
-                </div>
-                <div class="research-card">
-                    <h3>Machine Learning & AI</h3>
-                    <p class="preview-text">We advance the frontiers of artificial intelligence through research in deep learning architectures, neural network optimization, reinforcement learning, and transfer learning.</p>
-                    <div class="full-text">
-                        <p>Our work spans supervised and unsupervised learning paradigms with applications in pattern recognition, natural language processing, predictive analytics, and intelligent decision support systems. Research areas include developing lightweight AI models for edge computing, explainable AI for critical applications, federated learning for privacy-preserving systems, and meta-learning approaches for few-shot learning scenarios. We also explore adversarial robustness and fairness in AI systems.</p>
-                    </div>
-                    <button class="read-more-btn" onclick="toggleCard(this)">Read More</button>
-                </div>
-                <div class="research-card">
-                    <h3>Computer Vision</h3>
-                    <p class="preview-text">Our computer vision research creates advanced visual perception systems for real-time object detection, semantic segmentation, instance segmentation, 3D reconstruction, and complex scene understanding.</p>
-                    <div class="full-text">
-                        <p>We develop algorithms that enable machines to interpret and understand visual information with human-level or superior accuracy. Applications include medical image analysis for disease diagnosis, intelligent surveillance systems with anomaly detection, quality inspection in manufacturing, autonomous vehicle perception, augmented reality systems, and facial recognition technologies. We work with both traditional image processing and modern deep learning approaches.</p>
-                    </div>
-                    <button class="read-more-btn" onclick="toggleCard(this)">Read More</button>
-                </div>
-                <div class="research-card">
-                    <h3>IoT & Embedded Systems</h3>
-                    <p class="preview-text">We design and implement sophisticated smart sensor networks and embedded computing platforms for industrial automation, smart agriculture, environmental monitoring, and intelligent building management.</p>
-                    <div class="full-text">
-                        <p>Our focus is on creating energy-efficient, scalable, and secure IoT solutions that can operate reliably in challenging conditions. Research includes developing low-power wireless communication protocols, edge computing frameworks for distributed intelligence, secure data transmission mechanisms, and real-time data processing pipelines. We also work on sensor fusion techniques and predictive maintenance systems for industrial equipment.</p>
-                    </div>
-                    <button class="read-more-btn" onclick="toggleCard(this)">Read More</button>
-                </div>
-                <div class="research-card">
-                    <h3>Human-Robot Interaction</h3>
-                    <p class="preview-text">We research natural and intuitive interfaces that enable seamless collaboration between humans and robots in shared workspaces.</p>
-                    <div class="full-text">
-                        <p>Our work includes gesture recognition systems, voice-controlled interfaces, haptic feedback mechanisms, and adaptive robot behaviors that respond to human intentions and emotions. Focus areas include socially assistive robotics for elderly care and special education, collaborative manufacturing systems where humans and robots work side-by-side, telepresence robots for remote communication, and rehabilitation robots that adapt to patient progress and provide personalized therapy.</p>
-                    </div>
-                    <button class="read-more-btn" onclick="toggleCard(this)">Read More</button>
-                </div>
-                <div class="research-card">
-                    <h3>Healthcare Robotics</h3>
-                    <p class="preview-text">Our healthcare robotics initiative develops innovative robotic solutions for medical diagnosis, minimally invasive surgical assistance, physical rehabilitation, medication delivery, and elderly care support.</p>
-                    <div class="full-text">
-                        <p>We integrate AI and robotics to improve patient outcomes, reduce healthcare costs, and increase accessibility to quality medical services in underserved areas. Current projects include developing telemedicine robots for remote patient monitoring, exoskeleton systems for mobility assistance, automated drug dispensing systems, robotic companions for mental health support, and AI-powered diagnostic tools for early disease detection using medical imaging and biosensor data.</p>
-                    </div>
-                    <button class="read-more-btn" onclick="toggleCard(this)">Read More</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Director Section -->
+    <!-- About Me -->
     <section class="director-section" id="people">
         <div class="container">
             <div class="section-title">
-                <h2>Lab Director</h2>
-                <p>Meet our research leader</p>
+                <h2>About Me</h2>
+                <p>Lecturer, Researcher & AI Enthusiast</p>
             </div>
             <div class="director-container">
                 <div class="director-image">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 280 280'%3E%3Crect fill='%23003d7a' width='280' height='280'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='white' text-anchor='middle' dy='.3em' font-family='Arial'%3EProfessor Photo%3C/text%3E%3C/svg%3E" alt="Professor">
+                    <img src="https://i.postimg.cc/vmYVkbZF/1713902309596.jpg" alt="Sudipto Pramanik">
                 </div>
                 <div class="director-info">
-                    <h3>Dr. [Professor Name]</h3>
-                    <p class="title">Professor & Lab Director</p>
+                    <h3>Sudipto Pramanik</h3>
+                    <p class="title">Lecturer & Research Mentor</p>
                     <p class="dept">Department of Electrical & Electronic Engineering<br>Daffodil International University</p>
-                    
-                    <p>Dr. [Name] is a distinguished researcher and educator with over 15 years of extensive experience in robotics, artificial intelligence, and intelligent control systems. He received his Ph.D. in Electrical Engineering from [University Name], where his doctoral research focused on autonomous navigation and multi-agent robotic systems. Prior to joining Daffodil International University, he held research positions at several renowned institutions and contributed to multiple international collaborative projects.</p>
-                    
-                    <p>His research portfolio encompasses a wide range of cutting-edge topics including swarm robotics, neural network optimization, sensor fusion, and embedded AI systems. Dr. [Name] has published over 40 research papers in top-tier international journals and conferences, with several publications receiving best paper awards. His work has been cited extensively by researchers worldwide, reflecting the significant impact of his contributions to the field.</p>
-                    
-                    <p>As Lab Director, he leads a dynamic and diverse research team comprising post-doctoral researchers, graduate students, and undergraduate research assistants. Under his mentorship, numerous students have successfully completed their thesis projects, published research papers, and secured positions at leading technology companies and prestigious universities. He actively supervises ongoing projects funded by national research grants, international collaborations, and industry partnerships.</p>
-                    
-                    <p>Dr. [Name] is deeply committed to fostering innovation and entrepreneurship among students. He regularly conducts workshops on research methodology, academic writing, and emerging technologies. He serves as a reviewer for several international journals and conferences and is an active member of professional organizations including IEEE, ACM, and the Robotics Society. His vision is to establish the lab as a nationally recognized center of excellence that contributes meaningfully to both academic knowledge and societal development.</p>
-                    
+                    <p>Sudipto Pramanik is a dedicated lecturer and researcher with a strong foundation in AI and machine learning. He holds an MSc in EEE (Communication Signal Processing) from BUET and is committed to bridging theory and practice.</p>
+                    <p>His work spans deep learning, NLP (especially Bengali), signal processing, and explainable AI. He mentors students through IEEE and conducts workshops on ML and MATLAB.</p>
+                    <p>With a passion for innovation, Sudipto aims to develop intelligent systems that solve real-world challenges while nurturing the next generation of engineers.</p>
                     <div class="research-interests">
                         <h4>Research Interests</h4>
                         <div class="interests-list">
-                            <span class="interest-tag">Autonomous Robotics</span>
                             <span class="interest-tag">Machine Learning</span>
-                            <span class="interest-tag">Computer Vision</span>
-                            <span class="interest-tag">Control Systems</span>
-                            <span class="interest-tag">IoT Systems</span>
-                            <span class="interest-tag">Swarm Intelligence</span>
-                            <span class="interest-tag">Edge Computing</span>
+                            <span class="interest-tag">Deep Learning</span>
+                            <span class="interest-tag">Natural Language Processing</span>
+                            <span class="interest-tag">Signal Processing</span>
+                            <span class="interest-tag">Explainable AI</span>
                         </div>
                     </div>
+                    <div class="director-actions">
+                        <a href="https://drive.google.com/file/d/1sNaQ9G221FJDWBVdFvPBLpiqqyV3sWCy/view" target="_blank" class="btn btn-primary">
+                            <i class="fas fa-file-pdf"></i> Download CV
+                        </a>
+                        <a href="https://drive.google.com/file/d/1DTqVe7r0-Y2UCOuClh2LV-Yu8ip8t1ZH/view" target="_blank" class="btn btn-outline" style ="color : blue">
+                            <i class="fas fa-graduation-cap"></i> View Transcript
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <h3>25+</h3>
-                <p>Research Publications</p>
-            </div>
-            <div class="stat-item">
-                <h3>12</h3>
-                <p>Active Projects</p>
-            </div>
-            <div class="stat-item">
-                <h3>30+</h3>
-                <p>Research Students</p>
-            </div>
-            <div class="stat-item">
-                <h3>8+</h3>
-                <p>Industry Partners</p>
+            <div class="social-icons">
+                <a href="mailto:sudipto.eee0247.c@diu.edu.bd" title="Gmail"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.facebook.com/sudipto.pramanik.2024/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.linkedin.com/in/sudipto-pramanik-081073218" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/sudiptopramanik" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://scholar.google.com/citations?user=KR_52zUAAAAJ&hl=en" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
             </div>
         </div>
     </section>
 
-    <!-- Ongoing Projects -->
-    <section id="projects" style="background: var(--light-bg);">
+    <!-- Education -->
+    <section class="education-section" id="education">
         <div class="container">
             <div class="section-title">
-                <h2>Ongoing Research Projects</h2>
-                <p>Current initiatives driving innovation forward</p>
+                <h2>Education</h2>
+                <p>Academic Excellence & Continuous Learning</p>
             </div>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Smart Agricultural Robot for Precision Farming</h3>
-                        <span class="project-status active">Active</span>
-                    </div>
-                    <p class="project-desc">Development of an autonomous ground robot equipped with multispectral cameras and AI-powered disease detection algorithms for real-time crop health monitoring and precision pesticide application.</p>
-                    <div class="project-meta">
-                        <span>📅 2024-2026</span>
-                        <span>💰 Funded by: Ministry of Science & Technology</span>
+            <div class="timeline">
+                <div class="edu-item">
+                    <div class="edu-year">2024</div>
+                    <div class="edu-content">
+                        <h3>MSc in Electrical and Electronic Engineering</h3>
+                        <div class="degree">Bangladesh University of Engineering and Technology (BUET)</div>
+                        <p>Specialization: Communication Signal Processing | Thesis: Spam-Aware Email Generation using LLMs</p>
                     </div>
                 </div>
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>AI-Powered Medical Diagnostic Assistant</h3>
-                        <span class="project-status active">Active</span>
-                    </div>
-                    <p class="project-desc">Creating a deep learning system for automated analysis of medical images including X-rays, CT scans, and MRI data to assist healthcare professionals in early disease detection and diagnosis.</p>
-                    <div class="project-meta">
-                        <span>📅 2023-2025</span>
-                        <span>💰 Funded by: Bangladesh Medical Research Council</span>
+                <div class="edu-item">
+                    <div class="edu-year">2019–2024</div>
+                    <div class="edu-content">
+                        <h3>BSc in Electrical and Electronic Engineering</h3>
+                        <div class="degree">Bangladesh University of Engineering and Technology (BUET)</div>
+                        <p>University Merit Scholarship & Dean’s List (Top 12%) | Multiple national board scholarships</p>
                     </div>
                 </div>
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Industrial IoT for Smart Manufacturing</h3>
-                        <span class="project-status active">Active</span>
-                    </div>
-                    <p class="project-desc">Implementing an integrated IoT sensor network with edge computing capabilities for real-time monitoring, predictive maintenance, and optimization of manufacturing processes in textile industries.</p>
-                    <div class="project-meta">
-                        <span>📅 2024-2026</span>
-                        <span>💰 Industry Partnership: BGMEA</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Drone-Based Disaster Response System</h3>
-                        <span class="project-status active">Active</span>
-                    </div>
-                    <p class="project-desc">Building an autonomous drone fleet with computer vision and thermal imaging for search and rescue operations, damage assessment, and emergency supply delivery in disaster-affected areas.</p>
-                    <div class="project-meta">
-                        <span>📅 2024-2025</span>
-                        <span>💰 Collaboration with Fire Service & Civil Defense</span>
+                <div class="edu-item">
+                    <div class="edu-year">2016–2018</div>
+                    <div class="edu-content">
+                        <h3>Higher Secondary Certificate (HSC)</h3>
+                        <div class="degree">Notre Dame College, Dhaka</div>
+                        <p>Grade: 5.00 / 5.00 | Core Courses: Physics, Chemistry, Higher Mathematics, Information & Communication Technology</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Publications Section -->
-    <section id="achievements">
+    <!-- TOEFL -->
+    <section class="score-section" id="score">
         <div class="container">
             <div class="section-title">
-                <h2>Recent Publications</h2>
-                <p>Our latest contributions to scientific knowledge</p>
+                <h2>TOEFL iBT Score</h2>
+                <p>International English Proficiency</p>
             </div>
-            <div class="publications-list">
-                <div class="publication-item">
-                    <h4>Deep Learning Approaches for Autonomous Navigation in Unstructured Environments</h4>
-                    <p class="pub-authors"><strong>Dr. [Professor Name]</strong>, M. Rahman, S. Ahmed</p>
-                    <p class="pub-venue">IEEE Transactions on Robotics and Automation, Vol. 45(3), 2024</p>
-                    <div class="pub-badges">
-                        <span class="badge">Q1 Journal</span>
-                        <span class="badge">Impact Factor: 6.8</span>
-                        <span class="badge">32 Citations</span>
-                    </div>
+            <div class="score-card">
+                <img src="https://i.postimg.cc/ZRF60HKn/unnamed.png" alt="TOEFL Logo" style="width: 800% ;">
+                <h3>107 / 120</h3>
+                <p><strong>Test Date:</strong> May 21, 2025</p>
+                <div class="score-grid">
+                    <div class="score-item"><strong>Reading:</strong> 29 / 30</div>
+                    <div class="score-item"><strong>Listening:</strong> 26 / 30</div>
+                    <div class="score-item"><strong>Speaking:</strong> 25 / 30</div>
+                    <div class="score-item"><strong>Writing:</strong> 27 / 30</div>
                 </div>
-                <div class="publication-item">
-                    <h4>Explainable AI Framework for Medical Image Analysis: A Clinical Perspective</h4>
-                    <p class="pub-authors">A. Khan, <strong>Dr. [Professor Name]</strong>, F. Hossain, R. Islam</p>
-                    <p class="pub-venue">Journal of Medical Imaging and Health Informatics, Vol. 14(2), 2024</p>
-                    <div class="pub-badges">
-                        <span class="badge">Scopus Indexed</span>
-                        <span class="badge">18 Citations</span>
-                    </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research -->
+    <section id="research" style="background: var(--light-bg);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Research Works</h2>
+                <p>Publications, Projects & Contributions</p>
+            </div>
+            <div class="research-grid">
+                <div class="research-card">
+                    <h3>An Automatic Spam-Aware Email Generation Scheme Based on Efficient Fine-Tuning of Large Language Models</h3>
+                    <p><strong>Under Review:</strong> IEEE Transactions on Computational Social Systems (IEEE TCSS)</p>
+                    <p>Fine-tuned GPT-2 and Mistral-7B using LoRA and SFT to generate professional emails that evade spam filters. Achieved superior performance in context, safety, and spam avoidance.</p>
                 </div>
-                <div class="publication-item">
-                    <h4>Energy-Efficient Edge Computing for Real-Time IoT Applications</h4>
-                    <p class="pub-authors">S. Akter, M. Hassan, <strong>Dr. [Professor Name]</strong></p>
-                    <p class="pub-venue">International Conference on IoT and Smart Systems (ICISS 2024), Singapore</p>
-                    <div class="pub-badges">
-                        <span class="badge">Best Paper Award</span>
-                        <span class="badge">IEEE Conference</span>
-                    </div>
+                <div class="research-card">
+                    <h3>Leveraging Direct Preference Optimization (DPO) for Enhanced Abstractive Summarization in Bangla News Headline Generation</h3>
+                    <p><strong>Under Review:</strong> IEEE Access</p>
+                    <p>Applied DPO on LLaMA-3.2-1B using Kaggle Bengali dataset. Generated concise, human-like headlines with strong contextual alignment.</p>
                 </div>
-                <div class="publication-item">
-                    <h4>Human-Robot Collaboration in Manufacturing: A Survey of Recent Advances</h4>
-                    <p class="pub-authors"><strong>Dr. [Professor Name]</strong>, T. Ahmed, N. Begum</p>
-                    <p class="pub-venue">Robotics and Computer-Integrated Manufacturing, Vol. 82, 2023</p>
-                    <div class="pub-badges">
-                        <span class="badge">Q1 Journal</span>
-                        <span class="badge">Impact Factor: 5.3</span>
-                        <span class="badge">45 Citations</span>
-                    </div>
+                <div class="research-card">
+                    <h3>A Simple Time Domain Algorithm for the Detection of Ventricular Fibrillation in Electrocardiogram</h3>
+                    <p><strong>Published:</strong> Signal, Image and Video Processing (Springer)</p>
+                    <p>TCSC algorithm on MIT-BIH & CU databases. Achieved 80% sensitivity, 83% specificity. Real-time clinical applicability.</p>
+                </div>
+                <div class="research-card">
+                    <h3>Photoplethysmograph (PPG) Signal Analysis Using Machine Learning for Atrial Fibrillation Detection</h3>
+                    <p><strong>Undergraduate Thesis, BUET</strong></p>
+                    <p>ML-based PPG analysis for AF detection. Feature extraction and classification using SVM, RF, and LSTM.</p>
                 </div>
             </div>
             <div style="text-align: center; margin-top: 40px;">
-                <a href="#" class="btn btn-primary">View All Publications</a>
+            <a href="https://scholar.google.com/citations?user=KR_52zUAAAAJ&hl=en" target="_blank" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; font-size: 16px;">
+                <i class="fas fa-graduation-cap"></i>
+                View All
+            </a>
             </div>
         </div>
     </section>
 
-    <!-- News & Updates -->
-    <section style="background: var(--light-bg);">
+    <!-- Projects -->
+    <section id="projects">
         <div class="container">
             <div class="section-title">
-                <h2>News & Updates</h2>
-                <p>Latest happenings from our lab</p>
+                <h2>Notable Projects</h2>
+                <p>Graduate & Undergraduate Research Initiatives</p>
             </div>
-            <div class="news-grid">
-                <div class="news-card">
-                    <div class="news-date">October 15, 2024</div>
-                    <h3>Lab Wins Best Innovation Award at National Robotics Competition</h3>
-                    <p>Our team secured first place at the Bangladesh Robotics Olympiad 2024 with their autonomous agriculture robot prototype. The project demonstrated advanced AI-powered crop monitoring capabilities.</p>
-                    <a href="#" class="news-link">Read More →</a>
+            <div class="projects-grid">
+
+                <!-- Graduate Projects -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>An Automatic Spam-Aware Email Generation Scheme</h3>
+                    </div>
+                    <p class="project-desc">Fine-tuned GPT-2 & Mistral-7B with LoRA and SFT to generate professional, spam-filter-safe emails. Outperforms base models in context and safety.</p>
+                    <div class="project-meta">
+                        <span><i class="fas fa-user-tie"></i> Dr. Shaikh Anowarul Fattah, BUET</span>
+                        <span><i class="fas fa-tools"></i> GPT-2, Mistral-7B, LoRA, Hugging Face</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/sudiptopramanik/spam-aware-email-llm" target="_blank"><i class="fab fa-github"></i> GitHub Repo</a>
+                        <a href="https://drive.google.com/file/d/1sNaQ9G221FJDWBVdFvPBLpiqqyV3sWCy/view" target="_blank"><i class="fas fa-file-pdf"></i> Thesis PDF</a>
+                        <a href="https://huggingface.co/spaces/sudipto/spam-aware-demo" target="_blank"><i class="fas fa-play-circle"></i> Live Demo</a>
+                    </div>
                 </div>
-                <div class="news-card">
-                    <div class="news-date">September 28, 2024</div>
-                    <h3>New Collaboration with Samsung R&D Institute Bangladesh</h3>
-                    <p>We are excited to announce a strategic partnership with Samsung R&D to work on next-generation AI and IoT solutions for smart home applications.</p>
-                    <a href="#" class="news-link">Read More →</a>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Bangla News Headline Generation using DPO</h3>
+                    </div>
+                    <p class="project-desc">Fine-tuned LLaMA-3.2-1B using DPO on Kaggle Bengali summarization data. Achieved concise, human-like headlines.</p>
+                    <div class="project-meta">
+                        <span><i class="fas fa-user-tie"></i> Dr. Mohammad Ariful Haque, BUET</span>
+                        <span><i class="fas fa-tools"></i> LLaMA-3.2-1B, DPO, LoRA, Hugging Face</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/sudiptopramanik/bangla-dpo-headline" target="_blank"><i class="fab fa-github"></i> GitHub Repo</a>
+                        <a href="https://drive.google.com/file/d/1DTqVe7r0-Y2UCOuClh2LV-Yu8ip8t1ZH/view" target="_blank"><i class="fas fa-file-pdf"></i> Report PDF</a>
+                    </div>
                 </div>
-                <div class="news-card">
-                    <div class="news-date">September 10, 2024</div>
-                    <h3>Workshop on Deep Learning and Computer Vision Held Successfully</h3>
-                    <p>Over 150 students and professionals attended our 3-day intensive workshop on modern AI techniques. Industry experts from leading tech companies shared their insights.</p>
-                    <a href="#" class="news-link">Read More →</a>
+
+                <!-- Undergraduate Projects -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Electrical Service Design of 10-Storey Apartment</h3>
+                    </div>
+                    <p class="project-desc">Full electrical layout: fixtures, conduits, power distribution, transformer/generator/PFI ratings, emergency circuits.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/sudiptopramanik/electrical-design" target="_blank"><i class="fab fa-github"></i> GitHub Repo</a>
+                        <a href="https://drive.google.com/file/d/1example/view" target="_blank"><i class="fas fa-file-pdf"></i> Report PDF</a>
+                    </div>
                 </div>
-                <div class="news-card">
-                    <div class="news-date">August 22, 2024</div>
-                    <h3>Research Paper Accepted at IEEE International Conference</h3>
-                    <p>Our paper on "Federated Learning for Privacy-Preserving Healthcare Systems" has been accepted for presentation at IEEE ICMLA 2024 in Florida, USA.</p>
-                    <a href="#" class="news-link">Read More →</a>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>SkyWatch: Drone Surveillance for Disaster Management</h3>
+                    </div>
+                    <p class="project-desc">Real-time drone system with remote flight, geospatial mapping, and analytics for disaster response.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/sudiptopramanik/skywatch-drone" target="_blank"><i class="fab fa-github"></i> GitHub Repo</a>
+                    </div>
                 </div>
-                <div class="news-card">
-                    <div class="news-date">August 5, 2024</div>
-                    <h3>Lab Equipment Upgrade with Latest NVIDIA GPUs</h3>
-                    <p>Thanks to a generous grant, our lab has been equipped with NVIDIA A100 GPUs to accelerate deep learning research and training of large-scale AI models.</p>
-                    <a href="#" class="news-link">Read More →</a>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Floating Garbage Cleaning Robot</h3>
+                    </div>
+                    <p class="project-desc">Bluetooth-controlled robot with Arduino, servo motors, and PVC conveyor. Future: autonomy + CV.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/sudiptopramanik/garbage-cleaner-robot" target="_blank"><i class="fab fa-github"></i> GitHub Repo</a>
+                    </div>
                 </div>
-                <div class="news-card">
-                    <div class="news-date">July 18, 2024</div>
-                    <h3>Alumni Success: Former Student Joins MIT as PhD Candidate</h3>
-                    <p>We are proud to announce that our former research assistant, Md. Karim, has been admitted to MIT for doctoral studies in robotics with full funding.</p>
-                    <a href="#" class="news-link">Read More →</a>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Ventricular Fibrillation Detection in ECG</h3>
+                    </div>
+                    <p class="project-desc">TCSC algorithm on MIT-BIH & CU databases. 80% sensitivity, 83% specificity. Real-time use.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/sudiptopramanik/vf-detection" target="_blank"><i class="fab fa-github"></i> GitHub Repo</a>
+                        <a href="https://link.springer.com/article/10.1007/s11760-020-01807-2" target="_blank"><i class="fas fa-external-link-alt"></i> Paper</a>
+                    </div>
                 </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Real-Time Weather Monitoring System</h3>
+                    </div>
+                    <p class="project-desc">Arduino + DHT11 + ESP8266 with ThingSpeak integration. Monitors temp, humidity, dew point.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/sudiptopramanik/weather-monitor" target="_blank"><i class="fab fa-github"></i> GitHub Repo</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Water Level Indicator</h3>
+                    </div>
+                    <p class="project-desc">74-series ICs + 7-segment display. E/L/H/F/Overflow + buzzer. Simulated in Proteus.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/sudiptopramanik/water-level-indicator" target="_blank"><i class="fab fa-github"></i> GitHub Repo</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Green Vigilance: Plant Health Monitor</h3>
+                    </div>
+                    <p class="project-desc">IoT soil moisture sensor with auto-watering, sound alerts, and HC-05 mobile app.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/sudiptopramanik/green-vigilance" target="_blank"><i class="fab fa-github"></i> GitHub Repo</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Motor Rewinding Lab</h3>
+                    </div>
+                    <p class="project-desc">Hands-on rewinding of 4-pole 3-phase squirrel cage induction motor.</p>
+                    <div class="project-links">
+                        <a href="https://drive.google.com/file/d/1example/view" target="_blank"><i class="fas fa-file-pdf"></i> Lab Report</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>AC Signal Modifier GUI</h3>
+                    </div>
+                    <p class="project-desc">Interactive GUI for clipping, clamping, and DC regulation of AC signals. Real-time plotting.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/sudiptopramanik/ac-signal-modifier" target="_blank"><i class="fab fa-github"></i> GitHub Repo</a>
+                    </div>
+                </div>
+                
             </div>
+            <div style="text-align: center; margin-top: 30px;">
+                    <a href="https://github.com/sudiptopramanik" target="_blank" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 10px; padding: 15px 30px; font-size: 18px; background-color: #eae6e7; border-color: #333;">
+                        <i class="fab fa-github"></i>
+                        View All Projects on GitHub
+                    </a>
+                </div>
+
         </div>
     </section>
 
-    <!-- Achievements Section -->
-    <section>
+    <!-- Awards -->
+    <section id="awards" style="background: var(--light-bg);">
         <div class="container">
             <div class="section-title">
-                <h2>Achievements & Recognition</h2>
-                <p>Milestones that mark our journey of excellence</p>
+                <h2>Awards & Achievements</h2>
+                <p>Milestones and Recognitions</p>
             </div>
             <div class="achievements-timeline">
                 <div class="achievement-item">
-                    <div class="achievement-year">2024</div>
+                    <div class="achievement-year">2025</div>
                     <div class="achievement-content">
-                        <h3>🏆 Best Research Lab Award</h3>
-                        <p>Recognized as the "Best Engineering Research Lab" by Bangladesh University Grants Commission (UGC) for outstanding contributions to robotics and AI research.</p>
+                        <h3>Supervised 1st Runners-up Team, DoR Research Poster Presentation 2025</h3>
+                        <p>Guided undergraduate team to 1st Runners-up at DIU Division of Research Poster Presentation 2025.</p>
+                    </div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-year">2025</div>
+                    <div class="achievement-content">
+                        <h3>Coordinated Fire Detection System Installation – Knowledge Tower</h3>
+                        <p>Led BDT 6M project for advanced fire safety system across 12-storey academic building.</p>
+                    </div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-year">2025</div>
+                    <div class="achievement-content">
+                        <h3>Department Coordinator, Agent X: AI Prompting Competition</h3>
+                        <p>Facilitated student participation in Netcom Learning & Microsoft AI competition.</p>
+                    </div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-year">2025</div>
+                    <div class="achievement-content">
+                        <h3>Judge, IEEE PES Day 2025 Digital Poster Competition</h3>
+                        <p>Evaluated renewable energy posters alongside faculty and mentors.</p>
+                    </div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-year">2025</div>
+                    <div class="achievement-content">
+                        <h3>Judge, 7th National Earth and Space Summit</h3>
+                        <p>Judged Wall Magazine, Scrapbook, and Astro Craft categories at Notre Dame Eco and Space Club.</p>
                     </div>
                 </div>
                 <div class="achievement-item">
                     <div class="achievement-year">2024</div>
                     <div class="achievement-content">
-                        <h3>🎖️ National Innovation Grant</h3>
-                        <p>Awarded BDT 50 Lakh research grant by the Ministry of Science and Technology for the Smart Agriculture Robot project.</p>
+                        <h3>Speaker, “Intro to Machine Learning: A Beginner Step”</h3>
+                        <p>Delivered workshop for IEEE IAS DIU SB and WIE Affinity Group.</p>
                     </div>
                 </div>
                 <div class="achievement-item">
-                    <div class="achievement-year">2023</div>
+                    <div class="achievement-year">2024</div>
                     <div class="achievement-content">
-                        <h3>📜 International Patent Filed</h3>
-                        <p>Successfully filed an international patent for "AI-Powered Autonomous Navigation System for Agricultural Robots" (Patent Pending).</p>
+                        <h3>Finalist, Sustainable Energy Innovation Challenge (Bikiron)</h3>
+                        <p>Team ACES finalist in Energy-Smart Buildings category by SREDA.</p>
                     </div>
                 </div>
                 <div class="achievement-item">
-                    <div class="achievement-year">2023</div>
+                    <div class="achievement-year">2019–2024</div>
                     <div class="achievement-content">
-                        <h3>🌟 Best Paper Award at IEEE Conference</h3>
-                        <p>Received Best Paper Award at IEEE International Conference on IoT and Smart Systems (ICISS 2023) in Singapore.</p>
+                        <h3>University Merit Scholarship & Dean’s List Award</h3>
+                        <p>Top 12% of EEE cohort at BUET for consistent academic excellence.</p>
                     </div>
                 </div>
                 <div class="achievement-item">
-                    <div class="achievement-year">2022</div>
+                    <div class="achievement-year">Prior</div>
                     <div class="achievement-content">
-                        <h3>🤝 Industry Partnership Established</h3>
-                        <p>Signed MoU with Bangladesh Garment Manufacturers and Exporters Association (BGMEA) for smart manufacturing solutions.</p>
+                        <h3>Education Board Scholarship (HSC, SSC, JSC, PSC)</h3>
+                        <p>Merit positions in all national board examinations.</p>
                     </div>
                 </div>
                 <div class="achievement-item">
-                    <div class="achievement-year">2022</div>
+                    <div class="achievement-year">2021</div>
                     <div class="achievement-content">
-                        <h3>👨‍🎓 Student Success at International Competition</h3>
-                        <p>Lab students won 2nd place at the Asia-Pacific Robot Contest (ABU Robocon 2022) held in India.</p>
+                        <h3>Champion, EcoKNOW Olympiad & ChemE Action</h3>
+                        <p>Won intra-BUET environmental quiz and national chemical engineering quiz.</p>
+                    </div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-year">2021</div>
+                    <div class="achievement-content">
+                        <h3>Certificate of Outstanding Contribution to Bangla Wikipedia</h3>
+                        <p>Enriched open educational resources in Bangla via Wiki Education Program.</p>
+                    </div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-year">2021</div>
+                    <div class="achievement-content">
+                        <h3>Champion, Ori Contest 2021</h3>
+                        <p>Won with article “Origami in Engineering” at BUET Origami Club.</p>
+                    </div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-year">2020</div>
+                    <div class="achievement-content">
+                        <h3>Honorable Mention, INQUIZITIVE: IEEE Day 2020</h3>
+                        <p>Recognized for engineering knowledge in IEEE BUET SB quiz.</p>
+                    </div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-year">Prior</div>
+                    <div class="achievement-content">
+                        <h3>Certificate of Perfect Attendance – Notre Dame College</h3>
+                        <p>Zero absences throughout two-year HSC program.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer (Contact) -->
     <footer id="contact">
         <div class="footer-content">
             <div class="footer-section">
-                <h4>Advanced Robotics & AI Lab</h4>
+                <h4 style="color: white;">Sudipto Pramanik Research Portfolio</h4>
                 <p>Department of Electrical & Electronic Engineering</p>
                 <p>Daffodil International University</p>
                 <p>Permanent Campus, Ashulia</p>
                 <p>Dhaka-1342, Bangladesh</p>
             </div>
             <div class="footer-section">
-                <h4>Quick Links</h4>
-                <a href="#about">About Lab</a>
-                <a href="#research">Research Areas</a>
-                <a href="#projects">Ongoing Projects</a>
-                <a href="#people">Our Team</a>
-                <a href="#achievements">Publications</a>
-                <a href="https://daffodilvarsity.edu.bd">DIU Main Website</a>
-                <a href="https://www.facebook.com/EEEofDIU/">EEE Department</a>
+                <h4 style="color: white;">Quick Links</h4>
+                <a href="#home">Home</a>
+                <a href="#people">About Me</a>
+                <a href="#education">Education</a>
+                <a href="#score">TOEFL Score</a>
+                <a href="#research">Research</a>
+                <a href="#projects">Projects</a>
+                <a href="#awards">Awards</a>
+                <a href="https://daffodilvarsity.edu.bd">DIU Website</a>
+                <a href="https://sites.google.com/view/sudiptopramanik/">Personal Site</a>
             </div>
             <div class="footer-section">
-                <h4>Contact Information</h4>
-                <p>📧 robotics.lab@diu.edu.bd</p>
-                <p>📧 admission@daffodilvarsity.edu.bd</p>
-                <p>📞 +880-2-9138234 (Ext. 6401)</p>
-                <p>🏢 Room: EEE-401, Building-4</p>
+                <h4 style="color: white;">Contact Information</h4>
+                <p><i class="fas fa-envelope"></i> sudipto.eee0247.c@diu.edu.bd</p>
+                <p><i class="fas fa-phone"></i> 01303249802</p>
+                <p><i class="fas fa-map-marker-alt"></i> Room: EEE-401, Building-4</p>
                 <p>Permanent Campus, Ashulia, Savar</p>
                 <p>Dhaka-1342, Bangladesh</p>
             </div>
             <div class="footer-section">
-                <h4>Connect With Us</h4>
-                <a href="https://www.facebook.com/EEEofDIU/" target="_blank">Facebook - EEE Department</a>
-                <a href="https://www.linkedin.com/school/daffodil-international-university/" target="_blank">LinkedIn - DIU</a>
-                <a href="https://www.youtube.com/user/webmasterdiu" target="_blank">YouTube - DIU</a>
-                <a href="https://studentportal.diu.edu.bd" target="_blank">Student Portal</a>
-                <a href="https://clubs.daffodilvarsity.edu.bd" target="_blank">DIU Clubs</a>
+                <h4 style="color: white;">Connect With Me</h4>
+                <a href="mailto:sudipto.eee0247.c@diu.edu.bd"><i class="fas fa-envelope"></i> Gmail</a>
+                <a href="https://www.facebook.com/sudipto.pramanik.2024/" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
+                <a href="https://www.linkedin.com/in/sudipto-pramanik-081073218" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+                <a href="https://github.com/sudiptopramanik" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://scholar.google.com/citations?user=KR_52zUAAAAJ&hl=en" target="_blank"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Advanced Robotics & AI Lab, Daffodil International University. All rights reserved.</p>
+            <p>&copy; 2025 Sudipto Pramanik Research Portfolio, Daffodil International University. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
         function toggleMenu() {
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('active');
+            document.getElementById('navLinks').classList.toggle('active');
         }
-
-        function toggleAbout() {
-            const extraParas = document.getElementById('aboutExtra');
-            const btn = event.target;
-            extraParas.classList.toggle('show');
-            btn.textContent = extraParas.classList.contains('show') ? 'Read Less' : 'Read More';
-            btn.classList.toggle('expanded');
-        }
-
-        function toggleCard(button) {
-            const card = button.closest('.research-card');
-            const fullText = card.querySelector('.full-text');
-            fullText.classList.toggle('show');
-            button.textContent = fullText.classList.contains('show') ? 'Read Less' : 'Read More';
-            button.classList.toggle('expanded');
-        }
-
-        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    // Close mobile menu if open
-                    document.getElementById('navLinks').classList.remove('active');
-                }
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                document.getElementById('navLinks').classList.remove('active');
             });
         });
     </script>
