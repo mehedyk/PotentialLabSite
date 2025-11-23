@@ -1,12 +1,1320 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Artificial Intelligence Lab</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artificial Intelligence Lab - DIU</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Libre+Baskerville:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0a3d62;
+            --secondary: #1e90ff;
+            --accent: #00bfff;
+            --gold: #d4af37;
+            --text: #2c2c2c;
+            --light-bg: #f9f9fb;
+            --white: #ffffff;
+            --border: #e2e2e2;
+            --shadow: 0 8px 25px rgba(10, 61, 98, 0.12);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            background: var(--white);
+            font-size: 1rem;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            letter-spacing: 0.5px;
+            margin-bottom: 0.8rem;
+        }
+
+        .section-title h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.8rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #0f5a8a 100%);
+            box-shadow: 0 4px 20px rgba(10, 61, 98, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .top-bar {
+            background: rgba(0, 0, 0, 0.25);
+            padding: 10px 0;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 300;
+        }
+
+        .top-bar .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav {
+            background: transparent;
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 18px 0;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            font-family: 'Libre Baskerville', serif;
+        }
+
+        .logo-text p {
+            font-size: 0.8rem;
+            opacity: 0.9;
+            font-weight: 300;
+            color: var(--white);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 12px 22px;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover::before {
+            width: 60%;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.7rem;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hero {
+    background: linear-gradient(135deg, #0a3d62 0%, #0f5a8a 100%);
+    background-size: cover;
+    color: #ffffff;
+    padding: 130px 25px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Optional: Add a subtle pattern without affecting text visibility */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 25% 25%, rgba(30, 144, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.hero h2 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 22px;
+    line-height: 1.2;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    color: #ffffff; /* Force white color */
+}
+
+.hero p {
+    font-size: 1.35rem;
+    margin-bottom: 45px;
+    font-weight: 300;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #ffffff; /* Force white color */
+    opacity: 0.95;
+}
+
+        .hero-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 22px;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.35rem;
+            margin-bottom: 45px;
+            opacity: 0.95;
+            font-weight: 300;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 38px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+            font-size: 1.05rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--primary);
+            border: 2px solid var(--gold);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+
+        section {
+            padding: 100px 25px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-title p {
+            font-size: 1.15rem;
+            color: #666;
+            max-width: 750px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        .about-section {
+            background: var(--light-bg);
+        }
+
+        .about-container {
+            display: flex;
+            gap: 60px;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .about-image {
+            flex: 0 0 300px;
+            text-align: center;
+        }
+
+        .about-image img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: var(--shadow);
+            border: 6px solid var(--white);
+            transition: var(--transition);
+        }
+
+        .about-image img:hover {
+            transform: scale(1.03);
+        }
+
+        .about-info {
+            flex: 1;
+            min-width: 320px;
+        }
+
+        .about-info h3 {
+            font-size: 2.3rem;
+            margin-bottom: 8px;
+        }
+
+        .about-info .title {
+            font-size: 1.3rem;
+            color: var(--secondary);
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .about-info .dept {
+            color: #555;
+            margin-bottom: 28px;
+            font-size: 1.05rem;
+        }
+
+        .about-info p {
+            line-height: 1.9;
+            color: #444;
+            margin-bottom: 22px;
+            font-size: 1.05rem;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 18px;
+            padding: 35px;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--gold);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(10, 61, 98, 0.18);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 1.02rem;
+        }
+
+        .timeline {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            padding-left: 60px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 22px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--secondary), var(--accent));
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+            display: flex;
+            gap: 35px;
+            background: var(--white);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(10, 61, 98, 0.15);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -48px;
+            top: 8px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: 4px solid var(--white);
+            box-shadow: 0 0 0 4px var(--light-bg);
+        }
+
+        .timeline-year {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--secondary);
+            min-width: 80px;
+            text-align: center;
+            padding-top: 5px;
+        }
+
+        .timeline-content {
+            flex: 1;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content .degree {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 18px;
+            margin-top: 35px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .social-icons a {
+            color: var(--white);
+            background: var(--primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(10, 61, 98, 0.2);
+            text-decoration: none;
+        }
+
+        .social-icons a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gold);
+            transform: scale(0);
+            transition: var(--transition);
+            border-radius: 50%;
+        }
+
+        .social-icons a:hover::before {
+            transform: scale(1);
+        }
+
+        .social-icons a:hover {
+            color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+        }
+
+        .social-icons a i {
+            position: relative;
+            z-index: 1;
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--primary) 0%, #0f5a8a 100%);
+            color: var(--white);
+            padding: 70px 25px 30px;
+        }
+
+        .footer-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            font-size: 1.35rem;
+            margin-bottom: 25px;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .footer-section h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 12px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+            color: var(--gold);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 35px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .member-card {
+            background: var(--white);
+            border-radius: 18px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--gold);
+            transition: var(--transition);
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(10, 61, 98, 0.15);
+        }
+
+        .member-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 4px solid var(--white);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .member-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+
+        .member-card .role {
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        .member-card .dept {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 18px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--gold);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(10, 61, 98, 0.18);
+        }
+
+        .project-card h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .project-links a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .project-links a:hover {
+            color: var(--primary);
+            transform: translateX(3px);
+        }
+
+        @media (max-width: 992px) {
+            .about-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero h2 {
+                font-size: 2.8rem;
+            }
+
+            .section-title h2 {
+                font-size: 2.3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary);
+                flex-direction: column;
+                padding: 25px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 18px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .hero h2 {
+                font-size: 2.3rem;
+            }
+
+            .hero p {
+                font-size: 1.15rem;
+            }
+
+            .section-title h2 {
+                font-size: 2.1rem;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                padding-left: 20px;
+            }
+
+            .timeline-item::before {
+                left: -35px;
+            }
+
+            .timeline {
+                padding-left: 40px;
+            }
+
+            .timeline::before {
+                left: 15px;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .top-bar .container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            
+        }
+
+        .footer-section h4 {
+    color: #ffffff !important; /* Force white color */
+    font-size: 1.35rem;
+    margin-bottom: 25px;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.footer-section h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: var(--gold);
+}
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="top-bar">
+            <div class="container">
+                <div style="text-align: center;">
+                    <i class="fas fa-envelope"></i> sudipto.eee0247.c@diu.edu.bd |
+                    <i class="fas fa-phone"></i> 01303249802
+                </div>
+            </div>
+        </div>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">
+                    <div class="logo-text">
+                        <h1>Artificial Intelligence Lab</h1>
+                        <p>Department of EEE | Daffodil International University</p>
+                    </div>
+                </div>
+                <button class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home" class="nav-link" onclick="closeMenu()">Home</a></li>
+                    <li><a href="#about" class="nav-link" onclick="closeMenu()">About</a></li>
+                    <li><a href="#members" class="nav-link" onclick="closeMenu()">Members</a></li>
+                    <li><a href="#research-areas" class="nav-link" onclick="closeMenu()">Research Areas</a></li>
+                    <li><a href="#research" class="nav-link" onclick="closeMenu()">Research</a></li>
+                    <li><a href="#projects" class="nav-link" onclick="closeMenu()">Projects</a></li>
+                    <li><a href="#awards" class="nav-link" onclick="closeMenu()">Awards</a></li>
+                    <li><a href="#contact" class="nav-link" onclick="closeMenu()">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>Welcome to Artificial Intelligence Lab</h2>
+            <p>Advancing cutting-edge research in deep learning, natural language processing, and signal processing at Daffodil International University</p>
+            <p style="font-size: 1.1rem; color: var(--gold); font-weight: 600;">Established: Fall 2024</p>
+            <div class="hero-buttons">
+                <a href="#research" class="btn btn-primary">Explore Research</a>
+                <a href="#contact" class="btn btn-outline">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About the Lab</h2>
+                <p>A Hub for Innovation and Research Excellence</p>
+            </div>
+            <div class="about-container">
+                <div class="about-image">
+                    <img src="https://i.postimg.cc/vmYVkbZF/1713902309596.jpg" alt="Sudipto Pramanik">
+                </div>
+                <div class="about-info">
+                    <h3>EEE & AI Research Lab</h3>
+                    <p>The EEE & AI Research Lab at Daffodil International University was established in Fall 2024 with a vision to advance cutting-edge research in artificial intelligence, machine learning, and electrical engineering.</p>
+                    <p>Our lab focuses on solving real-world problems through innovative research in deep learning, natural language processing, signal processing, and explainable AI.</p>
+                    <p>We study a range of core AI and ML problems including deep neural networks, large language models, reinforcement learning, and computer vision, as well as emerging challenges in signal processing and interpretable machine learning.</p>
+                    <p>Our research is highly collaborative, working with researchers across the globe including computer scientists, data scientists, and domain experts.</p>
+                    <div style="margin-top: 30px; padding: 20px; background: rgba(30, 144, 255, 0.1); border-radius: 12px; border-left: 4px solid var(--secondary);">
+                        <h4 style="margin-bottom: 15px; color: var(--primary);">Lab Director</h4>
+                        <h5 style="font-size: 1.3rem; margin-bottom: 5px;">Sudipto Pramanik</h5>
+                        <p style="color: var(--secondary); font-weight: 600; margin-bottom: 5px;">Lecturer, Department of Electrical & Electronic Engineering</p>
+                        <p style="color: #666; font-size: 0.95rem; margin-bottom: 20px;">MSc in EEE (Communication Signal Processing), BUET</p>
+                        
+                        <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-bottom: 20px;">
+                            <a href="https://drive.google.com/file/d/1sNaQ9G221FJDWBVdFvPBLpiqqyV3sWCy" target="_blank" class="btn btn-primary" style="padding: 12px 25px; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 8px;">
+                                <i class="fas fa-download"></i> Download CV
+                            </a>
+                            <a href="https://drive.google.com/file/d/1DTqVe7r0-Y2UCOuClh2LV-Yu8ip8t1ZH" target="_blank" class="btn btn-outline" style="padding: 12px 25px; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 8px; color: var(--secondary); border-color: var(--secondary);">
+                                <i class="fas fa-file-pdf"></i> View Transcript
+                            </a>
+                        </div>
+
+                        <div class="social-icons" style="margin-top: 20px; justify-content: center;">
+                            <a href="mailto:sudipto.eee0247.c@diu.edu.bd" title="Gmail">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="https://www.facebook.com/sudipto.pramanik.2024/" target="_blank" title="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/sudipto-pramanik-081073218" target="_blank" title="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://github.com/sudiptopramanik" target="_blank" title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://scholar.google.com/citations?user=KR_52zUAAAAJ&hl=en" target="_blank" title="Google Scholar">
+                                <i class="fas fa-graduation-cap"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Areas Section -->
+    <section id="research-areas" style="background: var(--light-bg);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Research Areas</h2>
+                <p>Cutting-edge research across multiple domains of artificial intelligence and machine learning</p>
+            </div>
+            <div class="card-grid">
+                <div class="card">
+                    <h3><i class="fas fa-brain" style="color: var(--secondary); margin-right: 10px;"></i>Large Language Models</h3>
+                    <p>Fine-tuning and deploying LLMs like GPT, LLaMA, and Mistral for domain-specific applications including email generation, text summarization, and Bengali NLP.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-network-wired" style="color: var(--secondary); margin-right: 10px;"></i>Deep Learning</h3>
+                    <p>Advanced neural network architectures for computer vision, natural language understanding, and multimodal AI systems with applications in healthcare and automation.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-microchip" style="color: var(--secondary); margin-right: 10px;"></i>Reinforcement Learning</h3>
+                    <p>Developing intelligent agents using RL techniques including Direct Preference Optimization (DPO) and policy gradient methods for sequential decision-making tasks.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-heartbeat" style="color: var(--secondary); margin-right: 10px;"></i>Signal Processing</h3>
+                    <p>Digital signal processing for biomedical applications, ECG/PPG analysis, arrhythmia detection, and real-time health monitoring systems.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-eye" style="color: var(--secondary); margin-right: 10px;"></i>Explainable AI</h3>
+                    <p>Building interpretable machine learning models with transparency and trust, focusing on understanding AI decision-making processes and model behavior.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Members Section -->
+    <section id="members">
+        <div class="container">
+            <div class="section-title">
+                <h2>Current Members</h2>
+                <p>Our Active Research Community</p>
+            </div>
+
+            <h3 style="text-align: center; margin: 50px 0 30px; font-size: 1.8rem; color: var(--primary);">Founding Member</h3>
+            <div class="members-grid" style="max-width: 600px; margin: 0 auto 70px;">
+                <div class="member-card">
+                    <img src="https://i.postimg.cc/vmYVkbZF/1713902309596.jpg" alt="Sudipto Pramanik">
+                    <h3>Sudipto Pramanik</h3>
+                    <div class="role">Lab Director & Founder</div>
+                    <div class="dept">Department of EEE, DIU</div>
+                </div>
+            </div>
+
+            <h3 style="text-align: center; margin: 50px 0 30px; font-size: 1.8rem; color: var(--primary);">Advisors</h3>
+            <div class="members-grid" style="max-width: 700px; margin: 0 auto 70px;">
+                <div class="member-card">
+                    <img src="https://i.postimg.cc/5t3gm0Nz/Tama-Fouzder.jpg" alt="Tama Fouzder">
+                    <h3>Tama Fouzder</h3>
+                    <div class="role">Advisor</div>
+                    <div class="dept">Department of EEE, DIU</div>
+                </div>
+                <div class="member-card">
+                    <img src="https://i.postimg.cc/GtbVt5K5/Anan-ma-am.jpg" alt="Aanan Afsana Azad">
+                    <h3>Aanan Afsana Azad</h3>
+                    <div class="role">Advisor</div>
+                    <div class="dept">Department of EEE, DIU</div>
+                </div>
+            </div>
+
+            <h3 style="text-align: center; margin: 50px 0 30px; font-size: 1.8rem; color: var(--primary);">Undergraduate Research Team</h3>
+            <div class="members-grid">
+                <div class="member-card">
+                    <img src="https://i.postimg.cc/RhsV1wjz/Anik-Chawdhury.jpg" alt="Anik Chawdhury">
+                    <h3>Anik Chawdhury</h3>
+                    <div class="role">Undergraduate Researcher</div>
+                </div>
+                <div class="member-card">
+                    <img src="https://i.postimg.cc/43D8dMd2/Pallab-Biswas.jpg" alt="Pallab Biswas">
+                    <h3>Pallab Biswas</h3>
+                    <div class="role">Undergraduate Researcher</div>
+                </div>
+                <div class="member-card">
+                    <img src="https://i.postimg.cc/cJgPmRyf/Arafat-Islam.jpg" alt="Arafat Islam">
+                    <h3>Arafat Islam</h3>
+                    <div class="role">Undergraduate Researcher</div>
+                </div>
+                <div class="member-card">
+                    <img src="https://i.postimg.cc/7Zbq4CjZ/Dip-Chandra-Ray.jpg" alt="Dwaipayan Dip">
+                    <h3>Dwaipayan Dip</h3>
+                    <div class="role">Undergraduate Researcher</div>
+                </div>
+                <div class="member-card">
+                    <img src="https://i.postimg.cc/gcxrhJ0L/Shaon-Mondal-jpg.png" alt="Shaon Mondal">
+                    <h3>Shaon Mondal</h3>
+                    <div class="role">Undergraduate Researcher</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Works Section -->
+    <section id="research" style="background: var(--light-bg);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Research Publications</h2>
+                <p>Publications, Projects & Contributions</p>
+            </div>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>An Automatic Spam-Aware Email Generation Scheme</h3>
+                    <p><strong style="color: var(--secondary);">Status:</strong> Under Review</p>
+                    <p><strong>Journal:</strong> IEEE Transactions on Computational Social Systems (IEEE TCSS)</p>
+                    <p>Fine-tuned GPT-2 and Mistral-7B using LoRA and SFT to generate professional emails that evade spam filters. Achieved superior performance in context, safety, and spam avoidance.</p>
+                </div>
+                <div class="card">
+                    <h3>Leveraging Direct Preference Optimization (DPO)</h3>
+                    <p><strong style="color: var(--secondary);">Status:</strong> Under Review</p>
+                    <p><strong>Journal:</strong> IEEE Access</p>
+                    <p>Applied DPO on LLaMA-3.2-1B using Kaggle Bengali dataset. Generated concise, human-like headlines with strong contextual alignment.</p>
+                </div>
+                <div class="card">
+                    <h3>Ventricular Fibrillation Detection in ECG</h3>
+                    <p><strong style="color: #27ae60;">Status:</strong> Published</p>
+                    <p><strong>Journal:</strong> Signal, Image and Video Processing (Springer)</p>
+                    <p>TCSC algorithm on MIT-BIH & CU databases. Achieved 80% sensitivity, 83% specificity. Real-time clinical applicability.</p>
+                </div>
+                <div class="card">
+                    <h3>PPG Signal Analysis for AF Detection</h3>
+                    <p><strong style="color: #3498db;">Status:</strong> Undergraduate Thesis</p>
+                    <p><strong>Institution:</strong> BUET</p>
+                    <p>ML-based PPG analysis for AF detection. Feature extraction and classification using SVM, RF, and LSTM techniques.</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="https://scholar.google.com/citations?user=KR_52zUAAAAJ&hl=en" target="_blank" class="btn btn-primary">
+                    <i class="fas fa-graduation-cap"></i> View All Publications
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Notable Projects</h2>
+                <p>Graduate & Undergraduate Research Initiatives</p>
+            </div>
+            <div class="card-grid">
+                <div class="project-card">
+                    <h3>An Automatic Spam-Aware Email Generation Scheme</h3>
+                    <p>Fine-tuned GPT-2 & Mistral-7B with LoRA and SFT to generate professional, spam-filter-safe emails.</p>
+                    <p><strong>Tools:</strong> GPT-2, Mistral-7B, LoRA, Hugging Face</p>
+                    <div class="project-links">
+                        <a href="https://github.com/sudiptopramanik/spam-aware-email-llm" target="_blank">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        <a href="https://huggingface.co/spaces/sudipto/spam-aware-demo" target="_blank">
+                            <i class="fas fa-play-circle"></i> Demo
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Bangla News Headline Generation using DPO</h3>
+                    <p>Fine-tuned LLaMA-3.2-1B using DPO on Kaggle Bengali summarization data.</p>
+                    <p><strong>Tools:</strong> LLaMA-3.2-1B, DPO, LoRA, Hugging Face</p>
+                    <div class="project-links">
+                        <a href="https://github.com/sudiptopramanik/bangla-dpo-headline" target="_blank">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>SkyWatch: Drone Surveillance for Disaster Management</h3>
+                    <p>Real-time drone system with remote flight, geospatial mapping, and analytics for disaster response.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/sudiptopramanik/skywatch-drone" target="_blank">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Floating Garbage Cleaning Robot</h3>
+                    <p>Bluetooth-controlled robot with Arduino, servo motors, and PVC conveyor system.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/sudiptopramanik/garbage-cleaner-robot" target="_blank">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Ventricular Fibrillation Detection</h3>
+                    <p>TCSC algorithm on MIT-BIH & CU databases. 80% sensitivity, 83% specificity. Real-time use.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/sudiptopramanik/vf-detection" target="_blank">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        <a href="https://link.springer.com/article/10.1007/s11760-020-01807-2" target="_blank">
+                            <i class="fas fa-file-pdf"></i> Paper
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Green Vigilance: Plant Health Monitor</h3>
+                    <p>IoT soil moisture sensor with auto-watering, sound alerts, and HC-05 mobile app.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/sudiptopramanik/green-vigilance" target="_blank">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="https://github.com/sudiptopramanik" target="_blank" class="btn btn-primary">
+                    <i class="fab fa-github"></i> View All Projects on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" style="background: var(--light-bg);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Gallery</h2>
+                <p>Moments from Our Lab Activities and Events</p>
+            </div>
+            <div class="card-grid">
+                <div style="border-radius: 18px; overflow: hidden; box-shadow: var(--shadow);">
+                    <img src="https://nlp.daffodilvarsity.edu.bd/admin-assets/assets/uploaded-images/Events/Images/1915198844.jpg" alt="Lab event" style="width: 100%; height: 250px; object-fit: cover;">
+                </div>
+                <div style="border-radius: 18px; overflow: hidden; box-shadow: var(--shadow);">
+                    <img src="https://nlp.daffodilvarsity.edu.bd/admin-assets/assets/uploaded-images/Events/Images/1832117099.jpg" alt="Lab event" style="width: 100%; height: 250px; object-fit: cover;">
+                </div>
+                <div style="border-radius: 18px; overflow: hidden; box-shadow: var(--shadow);">
+                    <img src="https://nlp.daffodilvarsity.edu.bd/admin-assets/assets/uploaded-images/Events/Images/736120562.jpg" alt="Lab event" style="width: 100%; height: 250px; object-fit: cover;">
+                </div>
+                <div style="border-radius: 18px; overflow: hidden; box-shadow: var(--shadow);">
+                    <img src="https://nlp.daffodilvarsity.edu.bd/admin-assets/assets/uploaded-images/Events/Images/1339246755.jpg" alt="Lab event" style="width: 100%; height: 250px; object-fit: cover;">
+                </div>
+                <div style="border-radius: 18px; overflow: hidden; box-shadow: var(--shadow);">
+                    <img src="https://nlp.daffodilvarsity.edu.bd/admin-assets/assets/uploaded-images/Events/Images/623453508.jpg" alt="Lab event" style="width: 100%; height: 250px; object-fit: cover;">
+                </div>
+                <div style="border-radius: 18px; overflow: hidden; box-shadow: var(--shadow);">
+                    <img src="https://nlp.daffodilvarsity.edu.bd/admin-assets/assets/uploaded-images/Events/Images/894572038.jpg" alt="Lab event" style="width: 100%; height: 250px; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section id="awards">
+        <div class="container">
+            <div class="section-title">
+                <h2>Awards & Achievements</h2>
+                <p>Milestones and Recognitions</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2025</div>
+                    <div class="timeline-content">
+                        <h3>Supervised 1st Runners-up Team, DoR Research Poster 2025</h3>
+                        <p>Guided undergraduate team to 1st Runners-up at DIU Division of Research Poster Presentation 2025.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2025</div>
+                    <div class="timeline-content">
+                        <h3>Coordinated Fire Detection System Installation</h3>
+                        <p>Led BDT 6M project for advanced fire safety system across 12-storey academic building.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2024</div>
+                    <div class="timeline-content">
+                        <h3>Speaker: "Intro to Machine Learning: A Beginner Step"</h3>
+                        <p>Delivered workshop for IEEE IAS DIU SB and WIE Affinity Group.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2024</div>
+                    <div class="timeline-content">
+                        <h3>Finalist, Sustainable Energy Innovation Challenge</h3>
+                        <p>Team ACES finalist in Energy-Smart Buildings category by SREDA.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2019–2024</div>
+                    <div class="timeline-content">
+                        <h3>University Merit Scholarship & Dean's List Award</h3>
+                        <p>Top 12% of EEE cohort at BUET for consistent academic excellence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact Section -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Artificial Intelligence Lab</h4>
+                <p>Department of Electrical & Electronic Engineering</p>
+                <p>Daffodil International University</p>
+                <p>Permanent Campus, Ashulia</p>
+                <p>Dhaka-1342, Bangladesh</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#members">Members</a>
+                <a href="#research">Research</a>
+                <a href="#projects">Projects</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#awards">Awards</a>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contact Information</h4>
+                <p><i class="fas fa-envelope"></i> sudipto.eee0247.c@diu.edu.bd</p>
+                <p><i class="fas fa-phone"></i> 01303249802</p>
+                <p><i class="fas fa-map-marker-alt"></i> Room: EEE-401, Building-4</p>
+                <p>Permanent Campus, Ashulia, Savar</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Connect With Us</h4>
+                <a href="mailto:sudipto.eee0247.c@diu.edu.bd">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+                <a href="https://www.facebook.com/sudipto.pramanik.2024/" target="_blank">
+                    <i class="fab fa-facebook-f"></i> Facebook
+                </a>
+                <a href="https://www.linkedin.com/in/sudipto-pramanik-081073218" target="_blank">
+                    <i class="fab fa-linkedin-in"></i> LinkedIn
+                </a>
+                <a href="https://github.com/sudiptopramanik" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://scholar.google.com/citations?user=KR_52zUAAAAJ&hl=en" target="_blank">
+                    <i class="fas fa-graduation-cap"></i> Google Scholar
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Artificial Intelligence Lab, Daffodil International University. All rights reserved.</p>
+            <p>Built by <a href="https://github.com/mehedyk" style="color: var(--gold); text-decoration: none;">mehedyk</a></p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.remove('active');
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('nav');
+            const toggle = document.querySelector('.menu-toggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            if (!nav.contains(event.target) && !toggle.contains(event.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    closeMenu();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add active class to nav links on scroll
+        window.addEventListener('scroll', function() {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
 </html>
