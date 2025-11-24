@@ -984,7 +984,7 @@
             <div class="card-grid">
                 <div class="card">
                     <h3>Enhancing Genre Fidelity in Children’s Story Generation via Fine-Tuned LLMs</h3>
-                    <p><strong style="color: var(--secondary);">Status:</strong> doi:10.1109/QPAIN66474.2025.11171897 </p>
+                    <p><strong style="color: var(--secondary);">doi:</strong> 10.1109/QPAIN66474.2025.11171897 </p>
                     <p><strong>Journal:</strong> IEEE Transactions on Computational Social Systems (IEEE TCSS)</p>
                     <p>The increasing demand for genre-specific creative
 writing, particularly in children’s storytelling, has revealed
@@ -1010,22 +1010,43 @@ stories, supporting the development of controlled, genre-aware
 LLMs for creative writing applications.</p>
                 </div>
                 <div class="card">
-                    <h3>Leveraging Direct Preference Optimization (DPO)</h3>
+                    <h3>Enhancing Emotion Classification with Interpretability using LoRA-Finetuned LLaMA-3.2-3B
+ (DPO)</h3>
                     <p><strong style="color: var(--secondary);">Status:</strong> Under Review</p>
                     <p><strong>Journal:</strong> IEEE Access</p>
-                    <p>Applied DPO on LLaMA-3.2-1B using Kaggle Bengali dataset. Generated concise, human-like headlines with strong contextual alignment.</p>
+                    <p>This paper presents LoRGen, a two-stage frame-
+work for enhancing Large Language Model (LLM)-based Letter
+of Recommendation (LoR) generation through efficient fine-
+tuning and Direct Preference Optimization (DPO). Automation
+of LoR writing with generative models is crucial, as it reduces the
+workload of bulk recommendation writing, making the process
+less labor-intensive, more time-efficient, and standardized. Over
+the years, fine-tuned LLMs have been widely employed for
+downstream task-specific text generation, where these models
+have consistently demonstrated strong performance. However, in
+the context of LoR generation, fine-tuning remains inadequate
+to maintain coherence, context alignment, human-likeness, and
+personalization as required. To address these limitations, in our
+approach, supervised fine-tuning (SFT) has been integrated with
+DPO in a two-stage pipeline. In the first stage, the LLaMA-3.2-
+1B model is fine-tuned on a custom dataset of LoR prompts and
+sample responses using parameter-efficient Low-Rank Adapta-
+tion (LoRA). In the second stage, DPO is employed to incorporate
+human preferences, thereby optimizing the tone, clarity, and per-
+sonalization of the generated LoRs. Evaluation through ROUGE
+scores and qualitative human analysis demonstrates significant
+improvements in DPO-trained models over the SFT baselines.
+This work therefore highlights the effectiveness of systematically
+applying DPO to recommendation letter generation and estab-
+lishes its potential as a scalable approach for human-aligned text
+generation in academic and professional domains.</p>
                 </div>
                 <div class="card">
-                    <h3>Ventricular Fibrillation Detection in ECG</h3>
+                    <h3>Enhancing Emotion Classification with Interpretability using LoRA-Finetuned LLaMA-3.2-3B
+</h3>
                     <p><strong style="color: #27ae60;">Status:</strong> Published</p>
                     <p><strong>Journal:</strong> Signal, Image and Video Processing (Springer)</p>
-                    <p>TCSC algorithm on MIT-BIH & CU databases. Achieved 80% sensitivity, 83% specificity. Real-time clinical applicability.</p>
-                </div>
-                <div class="card">
-                    <h3>PPG Signal Analysis for AF Detection</h3>
-                    <p><strong style="color: #3498db;">Status:</strong> Undergraduate Thesis</p>
-                    <p><strong>Institution:</strong> BUET</p>
-                    <p>ML-based PPG analysis for AF detection. Feature extraction and classification using SVM, RF, and LSTM techniques.</p>
+                    <p>Understanding human emotions through language is a fundamental aspect of building empathetic and trustworthy AI systems. While traditional emotion classification models can detect basic emotional states from text, they typically lack the ability to explain their predictions—making them less transparent and harder to trust in real-world applications. In this work, we address this gap by supervised fine-tuning Meta’s LLaMA-3.2 3B-Instruct model using Low-Rank Adaptation (LoRA) on a custom dataset that pairs user comments with both emotion labels and natural language explanations. Our approach enables the model not only to classify the underlying emotion in a given text but also to generate a coherent justification for its prediction. Importantly, our results show that the model maintains strong classification accuracy even while generating detailed explanations, which supports the practical adoption of such explainable models. Furthermore, we develop an interactive Gradio-based user interface that enables users to input text and perform emotion classification with explanations. Side-by-side comparisons between the pretrained and fine-tuned models were also performed to demonstrate the contributions of the fine-tuning approach. This work, therefore, highlights the potential of lightweight fine-tuning techniques to enhance the reasoning capabilities of large language models in emotionally intelligent applications, such as mental health monitoring, customer sentiment analysis, and human-computer interaction.</p>
                 </div>
             </div>
         </div>
